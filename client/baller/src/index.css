@@ -1,3 +1,17 @@
+/* * {
+  margin:0px;
+  padding: 0px;
+  border: 1px solid red;
+
+} */
+
+@media screen and  (min-width: 500px) {
+  * {
+    max-width: 420px;
+    max-height: 800px;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,7 +20,229 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display:flex;
 }
+.main {
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.navbar {
+  background-color: #DCDCDC;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 14vh;
+
+}
+.profilebox,.matchbox, .chatview {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height: 86vh;
+
+}
+
+
+
+
+.profile {
+  margin-top: 4vh;
+}
+.value {
+  margin-left: 2vh;
+}
+.usercontainer  {
+  display:flex;
+  flex-direction: column;
+  width: 100vw;
+  flex: 7;
+  align-items:space-around;
+
+
+}
+
+
+.navbutton {
+
+  height: 8vh;
+  width: 15vw;
+}
+
+.profilpic {
+  border-radius: 100%;
+  background-image: url('./files/nadal2.jpg');
+  background-size:contain;
+}
+
+/* .userpic {
+  display:flex;
+  width: 80%;
+  height: 70vh;
+} */
+
+.pic {
+  margin: 2vh;
+  height:80%;
+  width: 85%;
+  object-fit:fill;
+  align-self: center;
+}
+
+.userinfo {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 2vh;
+}
+
+.decision-container {
+  background-color: #DCDCDC;
+  display: flex;
+  height: 12vh;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.decide {
+
+  border-radius:100%;
+  height: 8vh;
+  width: 8vh;
+  background-color: #DCDCDC;
+
+}
+
+.yes {
+  background-image: url('./files/tick.svg');
+  background-size: cover;
+
+}
+
+.no {
+  background-image: url('./files/cross.svg');
+  background-size: cover;
+
+
+}
+
+
+.chatpic {
+  border-radius: 100%;
+  object-fit: fill;
+  height: 8vh;
+  width: 8vh;
+  margin-left:1vh;
+
+}
+
+.matched {
+  display:flex;
+  height: 12vh;
+  flex-direction:row;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+
+}
+
+.chatoverview {
+  display: flex;
+  flex-direction: column;
+  flex: 7;
+  width:100vw;
+
+}
+
+.chatpreview {
+  display:flex;
+  flex-direction: row;
+  height: 12vh;
+  align-items:center;
+}
+
+.msgheader {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.msgname {
+
+  font-weight: bold;
+}
+.msgpreview {
+  margin-left: 3vh;
+  text-decoration: none;
+}
+
+.message-container {
+  display:flex;
+  flex-direction: column;
+  height: 74vh;
+}
+
+.chatbox {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+
+}
+.chatpartner {
+  display:flex;
+  align-self: flex-start;
+  flex-direction: row;
+  padding: 1vh 0;
+}
+
+.inchatpic {
+  margin-left: 2vh;
+}
+.partnername {
+  font-weight: bold;
+  align-self:center;
+  margin-left:3vh;
+}
+
+.message {
+  padding: 0.1vh 0.7vh;
+  margin-top: 1vh;
+  border: 1px solid black;
+  border-radius:17%;
+  background-color: #DCDCDC;
+  max-width:80vw;
+}
+
+.received {
+  align-self: flex-start;
+  margin-left: 3vh;
+}
+
+.sent {
+  align-self: flex-end;
+  margin-right: 3vh;
+}
+
+.inputbox {
+  height:12vh;
+  background-color: #DCDCDC;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  position: fixed;
+  top: 47%;
+  left: 40%;
+
+}
+
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
