@@ -5,6 +5,8 @@ const router = require('koa-router')();
 const controller = require('./controller/controller');
 
 
+router.post('/create', controller.create)
+router.get('/login', controller.login)
 router.get('/potentials/:id', controller.getPotentials);
 router.get('/matches/:id', controller.getMatches);
 router.post('/setmatch/:id', controller.setMatch);

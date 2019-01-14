@@ -7,6 +7,7 @@ class Chat extends Component {
 
   render () {
     const {post} = this.props;
+    const {matches} = this.props;
 
     console.log('chat', this.props.userId, this.props.location.state.user)
     const {user} = this.props.location.state;
@@ -14,7 +15,7 @@ class Chat extends Component {
     return (
 
       <div className="chatbox">
-        <MessageList user={user} />
+        <MessageList user={user} matches={matches}/>
         <MessageInput post={post} user={user} />
       </div>
 

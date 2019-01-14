@@ -5,15 +5,113 @@ const userData = require('../mocks/users');
 const matches = require('../mocks/matches');
 const chatMocks = require('../mocks/chats')
 const profile = require('../mocks/profile');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const uuidv4 = require('uuid/v4');
 
 const users = db.get('users');
 const chats = db.get('chats');
+
+
+// let hash = new Promise((resolve) => {
+//   bcrypt.hash('test', saltRounds, (err, hash) => {
+//     if (err) console.log(error);
+//     console.log(hash);
+//   }
+
+//   )}
+
+// )
+
+module.exports.create = async (ctx, next) => {
+
+  let user = ctx.request.body;
+  console.log(user);
+
+  let dbUser = await users.findOne({ email: user.email });
+  console.log(dbUser);
+
+  if (dbUser) ctx.status = 401;
+  else {
+    let hash = new Promise((resolve) => {
+      bcrypt.hash(user.password, saltRounds, (err, hash) => {
+        if (err) console.log(error);
+        resolve(hash);
+      })
+    });
+    let pw = await hash;
+    let token = uuidv4();
+
+    let thisUser = {
+      idid: '',
+      email: user.email,
+      password: pw,
+      token,
+      first: user.first,
+      last: user.last,
+      skill: user.skill,
+      age: user.age,
+      img: 'https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547042159/userpics/nadal2.jpg',
+      location: [2.154007, 41.390205],
+      matches: [],
+      declined: [],
+      flag: [],
+      sport: user.sport,
+      description: user.description
+    }
+
+
+    let inserted = await users.insert(thisUser)
+    console.log(inserted);
+
+    ctx.status = 201;
+    ctx.body = inserted;
+  }
+};
+
+
+
+
+module.exports.login = async (ctx, next) => {
+  if (ctx.request.headers.authorization) {
+    let userData = ctx.request.headers.authorization.slice(6);
+    let decode = new Buffer(userData, 'base64');
+    var decoded = decode.toString();
+    decoded = decoded.split(':');
+    let dbUser = await users.findOne({ email: decoded[0] });
+    console.log(dbUser)
+    if (!dbUser || dbUser === null) { ctx.status = 404; ctx.body = 'User not found.' }
+    let res = new Promise(resolve => bcrypt.compare(decoded[1], dbUser.password, (err, res) => { if (err) reject(err); else resolve(res) }
+    ));
+    if (await res) {
+      dbUser.password = '';
+      ctx.status = 201;
+      // ctx.headers.authorization = dbUser.token;
+      // dbUser.token = '';
+      console.log(dbUser, 'c')
+      ctx.body = dbUser;
+
+
+    }
+    else {
+      ctx.status = 401;
+      ctx.body = 'Username & Password do not match.'
+    }
+
+
+  }
+  else { ctx.status = 404; ctx.body = 'User not found.' }
+
+
+  // let dbUser = await User.findOne({ username: decoded[0] });
+
+
+};
 
 module.exports.setMsg = async (ctx, next) => {
   let info = ctx.request.body;
   let chatID = info.chatID;
   let content = info.msg
-  let userID = info.id;
   let author = ctx.params.id;
   let msg = {
     content,
@@ -22,8 +120,9 @@ module.exports.setMsg = async (ctx, next) => {
   }
 
   console.log(msg, chatID);
-  let theLog = await chats.update ({
-    _id: chatID}, {$push: { messages: msg }});
+  let theLog = await chats.update({
+    _id: chatID
+  }, { $push: { messages: msg } });
 
 
   console.log(theLog);
@@ -34,6 +133,8 @@ module.exports.setMsg = async (ctx, next) => {
 
 module.exports.setMatch = async (ctx, next) => {
 
+  console.log('incoming',ctx.params.id);
+  console.log(ctx.request.body)
   let myID = ctx.params.id;
   let matchID = ctx.request.body.idid;
   let done = await users.update({ idid: myID }, { $push: { matches: matchID } });
@@ -61,26 +162,17 @@ module.exports.getPotentials = async (ctx, next) => {
 
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id });
-  console.log(myUser);
+  let theList = await users.find({$and:[{ location: { $near: myUser.location, $maxDistance: 3000 }, skill: myUser.skill, sport: myUser.sport }]});
 
-  let theList = await users.find({ location: { $near: myUser.location, $maxDistance: 3000 }, skill: myUser.skill });
-  console.log(theList);
   let declined = myUser.declined;
   let matches = myUser.matches;
   let newList = theList.filter(user => {
-    console.log(user.idid);
-    console.log(myUser.declined, myUser.matches);
-    console.log(
-      !declined.includes(user.idid) || !matches.includes(user.idid));
+
     return (!declined.includes(user.idid) && !matches.includes(user.idid));
   })
-  console.log('string');
-
 
   ctx.status = 201;
   ctx.body = newList;
-
-
 };
 
 module.exports.getMatches = async (ctx, next) => {
@@ -100,13 +192,7 @@ module.exports.getMatches = async (ctx, next) => {
 
     return myMatches.includes(match.idid);
   });
-  // let arr = [];
 
-  // myChats.forEach(el => {
-
-  //   el.id1 === id ? arr.push(el.id2, el.messages) : arr.push(el.id1, el.messsages);
-
-  // });
 
 
 
@@ -126,17 +212,7 @@ module.exports.getMatches = async (ctx, next) => {
     return match;
   });
 
-  console.log(newestMatches)
-
-
-
-
-  // console.log(newMatches);
-  // console.log(myChats);
-
-
   ctx.status = 201;
-  // newMatches,
   ctx.body = newestMatches;
 };
 
@@ -154,11 +230,14 @@ module.exports.getProfile = async (ctx, next) => {
 module.exports.setProfile = async (ctx, next) => {
 
   console.log(ctx.request.body);
-  let profile = ctx.req.body;
+  let profile = ctx.request.body;
+  console.log(await users.update({idid : profile.idid},{profile}))
   ctx.status = 201;
   ctx.body = 'received';
 
 }
+
+
 
 const setUsers = (arr) => {
 
@@ -188,4 +267,21 @@ const setChats = (arr) => {
   //     { $or: [{ id1: userID }, { id2: author }] }]
   // },
   //   { $push: { messages: msg } });
+
+  // let id = uuidv4();
+  // console.log(id);
+  // let theList = await users.aggregate([
+  //   {
+  //     $geoNear:{
+  //       near:{ type:"Point", coordinates: myUser.location},
+  //       distanceField: "dist.calculated",
+  //      maxDistance: 2,
+  //      spherical: true
+  //     }},
+  //   { $sample: {size:3}},
+  //   {$match: {  skill: myUser.skill }}
+
+  //   ]);
+
+
 

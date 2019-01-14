@@ -22,18 +22,78 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display:flex;
 }
-.main {
+.main-container {
   display:flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
+
+.login, .create {
+  display:flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+
+}
+button{
+  border-style: none;
+}
+.logo {
+  margin-top: 10vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+
+}
+.mylogo {
+  font-family: 'Megrim', cursive;
+  font-size: 9vh;
+}
+
+.create-account {
+  display:flex;
+  background-color: #DCDCDC;
+  margin-top:5vh;
+  height:5vh;
+  align-items: center;
+  padding: 1vh;
+}
+
+.login-button {
+  margin-bottom: 5vh;
+  height: 5vh;
+
+}
+
+.login-form, .create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.create-form {
+  margin-top: 10vh;
+}
+
+.form-item {
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 3vh;
+}
+
+
 .navbar {
   background-color: #DCDCDC;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 14vh;
+  border-bottom: black 1px solid;
 
 }
 .profilebox,.matchbox, .chatview {
@@ -41,17 +101,33 @@ body {
   flex-direction: column;
   align-items: center;
   height: 86vh;
-
 }
 
 
 
 
 .profile {
+  display:flex;
   margin-top: 4vh;
+  width: 80vw;
+  justify-content: space-between;
 }
+.profile-button {
+  margin-top:4vh;
+
+}
+.logout-button {
+  position: absolute;
+  bottom: 5vh;
+  background-color: red;
+  height: 5vh;
+}
+
 .value {
   margin-left: 2vh;
+}
+.sport-input {
+  width:50vw;
 }
 .usercontainer  {
   display:flex;
@@ -59,13 +135,25 @@ body {
   width: 100vw;
   flex: 7;
   align-items:space-around;
-
-
+  justify-content:center;
 }
+
+/* .container {
+  width: 70vw;
+  height:60vh;
+  margin-top:5vh;
+
+} */
+/* .cards_container {
+  width: 80vw;
+  height:60vh;
+  align-self:center;
+  justify-self:center;
+
+} */
 
 
 .navbutton {
-
   height: 8vh;
   width: 15vw;
 }
@@ -74,6 +162,7 @@ body {
   border-radius: 100%;
   background-image: url('./files/nadal2.jpg');
   background-size:contain;
+  background-repeat: no-repeat;
 }
 
 /* .userpic {
@@ -85,25 +174,64 @@ body {
 .pic {
   margin: 2vh;
   height:80%;
-  width: 85%;
-  object-fit:fill;
+  width: 80%;
+  background-size:cover;
+  background-position: center;
+background-repeat: no-repeat;
   align-self: center;
 }
 
 .userinfo {
   display:flex;
+  width:90vw;
+  justify-self:center;
   justify-content: space-around;
-  margin-top: 2vh;
+
+  position:absolute;
+  bottom: 2vh;
+}
+
+.username {
+  padding: 0 1vw;
+  background-color: #DCDCDC;
+  font-weight: bold;
+  text-align: center;
+}
+
+.userdescription {
+  height: 3vh;
+  width: 3vh;
+}
+.thedescription {
+  width: 80vw;
+  align-self:center;
+  background-color: #DCDCDC;
+  position:absolute;
+  bottom: 7vh;
+  padding: 0.3vh;
+  border-radius: 8px;
+}
+.descriptiondiv {
+  background-color: #DCDCDC;
+  border-radius: 100%;
+  width:3vh;
+  height:3vh;
+}
+.userskill {
+  padding: 0 1vw;
+  background-color: #DCDCDC;
 }
 
 .decision-container {
   background-color: #DCDCDC;
   display: flex;
-  height: 12vh;
+  height: 14vh;
   align-items: center;
   width: 100%;
   justify-content: space-around;
+  border-top: 1px solid black;
 }
+
 
 .decide {
 
@@ -115,13 +243,13 @@ body {
 }
 
 .yes {
-  background-image: url('./files/tick.svg');
+  background-image: url('./files/tick3.svg');
   background-size: cover;
 
 }
 
 .no {
-  background-image: url('./files/cross.svg');
+  background-image: url('./files/cross3.svg');
   background-size: cover;
 
 
@@ -144,6 +272,8 @@ body {
   align-items: center;
   width: 100%;
   justify-content: flex-start;
+  overflow-x: scroll;
+  border-bottom: 1px solid black;
 
 }
 
@@ -153,6 +283,15 @@ body {
   flex: 7;
   width:100vw;
 
+
+}
+
+a,
+.chatoverview > a,
+.chatoverview > a:visited
+{
+  text-decoration: none;
+  color: inherit;
 }
 
 .chatpreview {
@@ -160,6 +299,7 @@ body {
   flex-direction: row;
   height: 12vh;
   align-items:center;
+  overflow-y:scroll;
 }
 
 .msgheader {
@@ -239,6 +379,7 @@ body {
   left: 40%;
 
 }
+
 
 
 

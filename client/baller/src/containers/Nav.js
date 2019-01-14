@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import ballimg from '../files/ball1.svg';
-import chatimg from '../files/chat1.svg';
+import ballimg from '../files/ball2.svg';
+import chatimg from '../files/chat3.svg';
 import profile from '../mocks/profile';
 
 
@@ -27,10 +27,10 @@ class Nav extends Component {
           <div className="navbutton button profilpic" style={myStyle} alt="user"></div>
         </Link>
         <Link to="/">
-          <img className="navbutton button" src={ballimg} alt="matching"></img>
+          <img className="navbutton" src={ballimg} alt="matching"></img>
         </Link>
         <Link to="mymatches">
-          <img className="navbutton button" src={chatimg} alt="chat"></img>
+          <img className="navbutton" src={chatimg} alt="chat"></img>
         </Link>
 
 

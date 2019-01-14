@@ -12,17 +12,17 @@ class Match extends Component {
 
   render () {
 
-    const { currentPotential } = this.props;
+
     const { yes } = this.props;
     const { no } = this.props;
 
 
-    if (currentPotential) {
+    if (this.props.potentials) {
       return (
 
         <div class="matchbox">
 
-          <PotentialInfo currentPotential={currentPotential} />
+          <PotentialInfo  potentials={this.props.potentials} length={this.props.length} yes = {yes} no={no}/>
           <Decision yes = {yes} no={no}/>
 
         </div>

@@ -1,27 +1,33 @@
 import React, {Component} from 'react';
-import { throws } from 'assert';
+
 
 class MessageList extends Component {
-  state = {
-    user: this.props.user
-  }
+  // state = {
+  //   user: this.props.user
+  // }
 
-  component
+  // componentDidMount() {
+  //   this.setState({user:this.props.user})
+  // }
+
+
 
 render () {
 
-  const messages = this.state.user.messages;
-  // const
+  let userID = this.props.user.idid
+  let user = this.props.matches.find(x => x.idid == userID);
+  const messages = user.messages;
+  console.log(messages)
   const received = "received";
   const sent = "sent";
   let messageView = [];
-  console.log(this.state.user);
+
 
   if (messages.length) {
     messageView = messages.map(message => {
       let tag;
-      message.author === this.state.user.idid ? tag = received : tag = sent;
-      console.log(message, tag)
+      message.author === user.idid ? tag = received : tag = sent;
+      // console.log(message, tag)
       return (
         <div className={`message ${tag}`}>{message.content}</div>
       )
@@ -37,8 +43,8 @@ render () {
     <div className="message-container">
 
       <div className="chatpartner">
-        <img className="chatpic inchatpic" src={this.state.user.img} alt="matchpic"></img>
-        <div className="partnername">{this.state.user.first}</div>
+        <img className="chatpic inchatpic" src={user.img} alt="matchpic"></img>
+        <div className="partnername">{user.first}</div>
       </div>
 
       {messageView}
@@ -47,8 +53,8 @@ render () {
   else return (
     <div className="message-container">
       <div className="chatpartner">
-        <img className="chatpic inchatpic" src={this.state.user.img} alt="matchpic"></img>
-        <div className="partnername">{this.state.user.first}</div>
+        <img className="chatpic inchatpic" src={user.img} alt="matchpic"></img>
+        <div className="partnername">{user.first}</div>
       </div>
     </div>
   )

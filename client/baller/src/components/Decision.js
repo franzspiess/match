@@ -16,8 +16,8 @@ const Decision = (props) => {
   return (
 
     <div className="decision-container">
-      <button className="decide yes" onClick={yes}></button>
-      <button className="decide no" onClick={no}></button>
+      <span className="decide yes" onClick={yes}></span>
+      <span className="decide no" onClick={no}></span>
     </div>
 
 

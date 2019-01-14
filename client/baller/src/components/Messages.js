@@ -15,7 +15,7 @@ const Messages = (props) => {
         <Link to={`chatview/${el.idid}`} state={{ user: el }} >
           <div className="chatpreview">
             <img className="chatpic" src={el.img} alt="matchpic"></img>
-            <div classname="msgheader">
+            <div className="msgheader">
               <div className="msgpreview msgname">{el.first}</div>
               <div className="msgpreview">{el.messages[0].content}</div>
             </div>
