@@ -21,10 +21,10 @@ class UserInfo extends Component {
 
 
 
-    const { potentials } = this.props;
-    const { yes } = this.props;
-    const { no } = this.props;
 
+    const { potentials, yes, no, newMatch, currentPotential, toggleNew } = this.props;
+
+    console.log(potentials)
 
 
     // const myStyle = {
@@ -44,12 +44,22 @@ class UserInfo extends Component {
 
 
 
+    const theEnd = () => {
+      return (
+        <div>
+          <div className="logo">
+          <span className="mylogo">MATCH</span>
+           <span className="test">No Players Near You</span>
+        </div>
 
 
-    let oldLength = potentials.length;
-    // let currentPotential = potentials[0];
+        </div>
+      )
+    }
 
-    console.log(oldLength)
+
+
+
 
     // const endCard = () => {
     //   return (<div>TEST</div>)
@@ -64,10 +74,10 @@ class UserInfo extends Component {
       let skillArr = skill.map(racket => {
         return (
           <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" ></img>
-          )
-        });
+        )
+      });
 
-        console.log(skillArr);
+
       const myStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -78,13 +88,19 @@ class UserInfo extends Component {
         backgroundRepeat: 'no-repeat',
         alignSelf: 'center',
         width: '84%',
-        height: '94%',
-        marginTop: '4vh;'
+        height: '92%',
+        marginTop: '2vh'
       }
 
       return (
-        <Card style={myStyle} key={user.id} onSwipeRight={yes} onSwipeLeft={no}>
-          {this.state.show ? <div className="thedescription">{user.description}</div> : null}
+        <Card style={myStyle} key={user._id} onSwipeRight={yes} onDoubleTap={yes} onSwipeLeft={no}>
+          {this.state.show ? <div className="thedescription">
+            <div className="sub-description">{user.description}</div>
+            <div className="skillArr">
+              <span className="theskill1">Skill Level:</span>
+              <span className="theskill2">  {skillArr}</span>
+            </div>
+          </div> : null}
           <div className="userinfo">
             <div className="username">{user.first}, {user.age}</div>
             <div className="descriptiondiv">
@@ -111,7 +127,7 @@ class UserInfo extends Component {
 
       return (
         <div className="usercontainer">
-          <CardWrapper className="wrapper">
+          <CardWrapper className="wrapper" addEndCard={theEnd}>
             {cards}
           </CardWrapper>
         </div>

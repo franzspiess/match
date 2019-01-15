@@ -8,6 +8,8 @@ class MessageList extends Component {
     showPic: false
   }
 
+
+
   click = () => {
     this.state.show ? this.setState({ show: false }) : this.setState({ show: true, showPic: false });
   }
@@ -28,6 +30,7 @@ class MessageList extends Component {
 
 
   render () {
+    console.log(this.props.location)
 
     let userID = this.props.user.idid
     let user = this.props.matches.find(x => x.idid === userID);

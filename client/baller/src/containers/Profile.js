@@ -55,7 +55,7 @@ class Profile extends Component {
           <div className="profile skill">
             <span className="title" >Skill:</span>
             <div className="skilldiv">
-              <span className="skilltitle">{this.state.skill} km</span>
+              <span className="skilltitle">{this.state.skill} /5</span>
               <input type="range" className="value skill-input ranger" min="1" max="5" placeholder={this.state.skill + '/5'} onChange={(e) => this.setState({ skill: e.target.value })}></input></div>
           </div>
           <div className="profile distance">

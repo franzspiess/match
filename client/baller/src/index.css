@@ -12,6 +12,10 @@
   }
 }
 
+Link {
+  width:
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -141,7 +145,38 @@ button{
   height: 86vh;
   font-family: 'Saira Condensed', sans-serif;
 }
-
+.newmatch-box {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 86vh;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 4vh;
+}
+.newmatch-data {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+.newmatch-buttons {
+  display:flex;
+  flex-direction: column;
+  width: 50vw;
+}
+.newmatch-btn {
+  background-color: #DCDCDC;
+  width: 50vw;
+  height: 4vh;
+  margin-bottom: 6vh;
+  border-radius: 4px;
+  font-weight:bold;
+  font-size:3vh;
+  text-align: center;
+  text-justify:center;
+  padding: 0.4vh 0.4vh;
+}
 .profile {
   display:flex;
   margin-top: 4vh;
@@ -258,11 +293,33 @@ background-repeat: no-repeat;
 .thedescription {
   width: 95%;
   align-self:center;
-  background-color: #DCDCDC;
+  background-color: white;
   position:absolute;
   bottom: 18%;
-  padding: 0.3vh;
+
   border-radius: 8px;
+
+}
+
+.sub-description {
+  margin-bottom: 2vh;
+}
+.theskill1 {
+  margin-right: 2vh;
+  font-weight: bold;
+}
+.theskill2 {
+  display:flex;
+  align-items:center;
+}
+.sub-description, .theskill1 {
+  padding: 1vh 1vh;
+}
+.skillArr {
+  /* margin-bottom: 2vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .descriptiondiv {
   background-color: white;
@@ -278,7 +335,7 @@ background-repeat: no-repeat;
 .userskill {
   margin: 2.7vh 2.7vh;
   display:flex;
-
+/*  */
 }
 
 .skillimg{
@@ -326,7 +383,7 @@ background-repeat: no-repeat;
   object-fit: fill;
   height: 8vh;
   width: 8vh;
-  margin-left:1vh;
+  margin-left:1.2vh;
 
 }
 

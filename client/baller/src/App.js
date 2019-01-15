@@ -20,18 +20,15 @@ class App extends Component {
     matches: [],
     potentials: [],
     myUser: {},
-    new: false
+    newMatch: false
   }
 
   toggleNew = () => {
-    this.setState({new:false})
+    this.setState({newMatch:false})
   }
   success = (located) => {
     const { latitude, longitude } = located.coords;
     this.setState({ located: [longitude, latitude] }, () => console.log('location', this.state.located));
-
-
-
   }
 
   create = (e) => {
@@ -195,7 +192,9 @@ class App extends Component {
     fetch(`${url}/matches/7`)
       .then(result => result.json())
       .then(matches => {
-        console.log('matches', matches);
+        console.log('check',matches.length, this.state.matches.length);
+
+        if (this.state.matches.length && matches.length > this.state.matches.length) this.setState({newMatch:true})
         // if (this.state && this.state.matches) matches.length > this.state.matches.length && alert('a');
 
         this.setState({ matches });
@@ -244,8 +243,8 @@ class App extends Component {
           <Nav />
           <Router>
             <Profile path="profile" myUser={this.state.myUser} updateUser={this.updateUser} logout={this.logout}/>
-            <Match path="/" yes={this.matchCurrentPotential.bind(this)} no={this.declineCurrentPotential.bind(this)} potentials={this.state.potentials} new={this.state.new} toggleNew={this.toggleNew} />
-            <MyMatches path="mymatches" matches={this.state.matches} myUser={this.state.myUser} />
+            <Match path="/" yes={this.matchCurrentPotential.bind(this)} no={this.declineCurrentPotential.bind(this)} potentials={this.state.potentials} newMatch={this.state.newMatch} toggleNew={this.toggleNew} currentPotential={this.state.currentPotential}/>
+            <MyMatches path="mymatches" matches={this.state.matches} myUser={this.state.myUser} fetchAndSet={this.fetchAndSetMatches}/>
             <Chat path="mymatches/chatview/:userId" post={this.postMsgToServer.bind(this)} matches={this.state.matches} />
           </Router>
 
