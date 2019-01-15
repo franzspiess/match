@@ -30,33 +30,39 @@ class MessageList extends Component {
 
 
   render () {
-    console.log(this.props.location)
-
     let userID = this.props.user.idid
     let user = this.props.matches.find(x => x.idid === userID);
     const messages = user.messages;
-    console.log(messages)
+
     const received = "received";
     const sent = "sent";
     let messageView = [];
 
+    let skill = Array(Number(user.skill)).fill('🎾')
+
+    let skillArr = skill.map(racket => {
+      return (
+        <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" alt="ball" ></img>
+      )
+    });
+
+
+
 
     if (messages.length) {
+      let i = 0;
       messageView = messages.map(message => {
+
         let tag;
         message.author === user.idid ? tag = received : tag = sent;
         // console.log(message, tag)
         return (
-          <div className={`message ${tag}`}>{message.content}</div>
+          <div className={`message ${tag}`} key={i}>{message.content}</div>
         )
-
-
-
-
-
 
       })
     }
+
     if (messageView && messageView.length) return (
       <div className="message-container">
         <div className="chatpartner">
@@ -64,7 +70,7 @@ class MessageList extends Component {
             <img className="chatpic inchatpic" src={user.img} alt="matchpic" onClick></img>
             <div className="partnername">{user.first}, {user.age}</div>
           </div>
-          <img className="chatdescription" src={infoimg} onClick={this.click}></img>
+          <img className="chatdescription" src={infoimg} onClick={this.click} alt="info"></img>
         </div>
         {this.state.show ? <div className="description-box-chat">{user.description}</div> :
           <div className="the-message-list">{messageView}</div>}
@@ -79,9 +85,16 @@ class MessageList extends Component {
             <img className="chatpic inchatpic" src={user.img} alt="matchpic" onClick={this.clickPic}></img>
             <div className="partnername">{user.first}, {user.age}</div>
           </div>
-          <img className="chatdescription" src={infoimg} onClick={this.click}></img>
+          <img className="chatdescription" src={infoimg} onClick={this.click} alt="info"></img>
         </div>
-        {this.state.show ? <div className="description-box-chat">{user.description}</div> : null}
+        {this.state.show ?
+          <div className="description-box-chat">
+            {user.description}
+            <div className="skillArr chatskill">
+              <span className="theskill1">Skill Level:</span>
+              <span className="theskill2">  {skillArr}</span>
+            </div>
+          </div> : null}
       </div>
     )
 

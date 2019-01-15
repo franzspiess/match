@@ -51,7 +51,7 @@ module.exports.create = async (ctx, next) => {
       last: user.last,
       skill: user.skill,
       age: user.age,
-      img: 'https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547042159/userpics/nadal2.jpg',
+      img: user.img,
       located: [2.154007, 41.390205],
       matches: [],
       declined: [],
@@ -154,6 +154,8 @@ module.exports.setDecline = async (ctx, next) => {
   let matchID = ctx.request.body.idid;
   console.log(await users.update({ idid: myID }, { $push: { declines: matchID } }));
   console.log(await users.update({ idid: matchID }, { $push: { declines: myID } }));
+  ctx.status = 201;
+  ctx.body = { key: 'fetched' }
 
 
 };

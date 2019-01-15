@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from '@reach/router';
+import { Link, Redirect, navigate } from '@reach/router';
 
 class Create extends Component {
 
@@ -10,7 +10,8 @@ class Create extends Component {
     skill: '',
     email: '',
     password: '',
-    sport: 'tennis'
+    sport: 'tennis',
+    img: ''
   };
 
 
@@ -36,13 +37,20 @@ class Create extends Component {
       email: '',
       password: ''
     })
+    navigate("/");
   }
 
   componentDidMount () {
     var myWidget = window.cloudinary.createUploadWidget({
-      cloudName: 'my_cloud_name',
-      uploadPreset: 'my_preset'
-    }, (error, result) => { console.log(error, result) })
+      cloudName: 'pinchepanchopincho',
+      uploadPreset: 'e0jros9k'
+    }, (error, result) => {
+      if (error) console.log(error);
+      result.info.url && this.setState({ img: result.info.url })
+
+      console.log(this.state);
+
+    })
 
     document.getElementById("upload_widget").addEventListener("click", function () {
       myWidget.open();
@@ -67,7 +75,6 @@ class Create extends Component {
         <div className="user-create-input">
           <button id="upload_widget" className="cloudinary-button">Upload User Image</button>
           <form className="create-form" onSubmit={this.handleSubmit}>
-
             <select className="form-select " name="carlist" form="carform" name="sport" onChange={this.handleChange}>
               <option value="tennis">Tennis</option>
               <option value="tabletennis">Table-Tennis</option>
@@ -83,7 +90,7 @@ class Create extends Component {
 
             <input type="text" className="form-text form-item" placeholder="E-Mail" name="email" onChange={this.handleChange} />
             <input type="text" className="form-text form-item" placeholder="password" name="password" onChange={this.handleChange} ></input>
-              <input type="submit" className="form-btn"  value="Create User"></input>
+            <input type="submit" className="form-btn" value="Create User"></input>
           </form>
         </div>
 
@@ -120,7 +127,3 @@ class Create extends Component {
 }
 
 export default Create;
-
-
-{/* </div><
-           */}

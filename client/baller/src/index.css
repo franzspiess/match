@@ -88,8 +88,12 @@ button{
   background-color: #DCDCDC;
   width: 60vw;
   color: black;
+  font-weight: bold;
+  font-family: 'Saira Condensed', sans-serif;
 
 }
+
+
 
 
 .create-account {
@@ -98,12 +102,15 @@ button{
   margin-top:5vh;
   height:5vh;
   align-items: center;
-  padding: 1vh;
+  padding: 2vh;
+
 }
 
 .login-button {
   margin-bottom: 5vh;
   height: 5vh;
+  font-family: 'Saira Condensed', sans-serif;
+  font-weight:bold;
 
 }
 
@@ -153,11 +160,23 @@ button{
   height: 86vh;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 4vh;
+  margin-bottom:
 }
+.newmatch-notify {
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+.newmatch-logo {
+  font-family: 'Megrim', cursive;
+  margin-bottom: 5vh;
+}
+
+
 .newmatch-data {
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   font-weight: bold;
 }
 .newmatch-buttons {
@@ -169,7 +188,7 @@ button{
   background-color: #DCDCDC;
   width: 50vw;
   height: 4vh;
-  margin-bottom: 6vh;
+  margin-bottom: 4vh;
   border-radius: 4px;
   font-weight:bold;
   font-size:3vh;
@@ -198,6 +217,8 @@ button{
   background-color: red;
   height: 5vh;
   font-weight: bold;
+  text-align: center;
+  line-height: 34px;
 }
 
 .value {
@@ -209,6 +230,7 @@ button{
 }
 .skilldiv .rangediv {
   width:50vw;
+
 }
 .ranger {
   width:38vw;
@@ -300,6 +322,9 @@ background-repeat: no-repeat;
   border-radius: 8px;
 
 }
+.button {
+
+}
 
 .sub-description {
   margin-bottom: 2vh;
@@ -320,6 +345,9 @@ background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.chatskill {
+  margin-top: 3vh;
 }
 .descriptiondiv {
   background-color: white;
@@ -354,6 +382,10 @@ background-repeat: no-repeat;
   /* border-top: 1px solid black; */
 }
 
+.noplayers {
+  margin-top: 2vh;
+  font-size: 3vh;
+}
 
 .decide {
   border-radius:100%;
@@ -487,7 +519,7 @@ a,
 
 }
 .description-box-chat {
-  background-color: #DCDCDC;
+
   width: 90vw;
   margin-top: 1vh;
   align-self: center;
@@ -496,8 +528,6 @@ a,
   border: 1px solid black;
   padding: 1vh;
   border-radius: 4px;
-
-
 
 
 }
@@ -528,12 +558,35 @@ a,
 }
 
 .inputbox {
+  border-top: 1px solid black;
   height:12vh;
-  background-color: #DCDCDC;
   display:flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+}
+
+.sendmsg {
+  margin:0 4vw 0 0;
+  padding: 1vh;
+
+  width: 50%;
+
+}
+.sendbtn {
+  margin:0;
+  padding: 1vh;
+  font-weight: bold;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+.form-btn {
+  height: 4vh;
+  margin:0;
+
+  font-weight: bold;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .loading {

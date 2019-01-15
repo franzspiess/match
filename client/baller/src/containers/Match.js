@@ -27,13 +27,15 @@ class Match extends Component {
         height: '30vh',
         width: '30vh',
         borderRadius: '100%',
-        marginBottom: '4vh'
+        marginBottom: '3vh'
 
       }
 
       return (
         <div className="newmatch-box">
           <div className="newmatch-data">
+            <div className="newmatch-notify">You've got a new</div>
+            <div className="newmatch-logo">MATCH</div>
             <div className="newmatch-pic" style={theStyle}></div>
             <div className="newmatch-info">{currentPotential.first}, {currentPotential.age}</div>
           </div>

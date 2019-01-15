@@ -12,7 +12,7 @@ const Messages = (props) => {
       console.log(el.img)
 
       return (
-        <Link to={`chatview/${el.idid}`} state={{ user: el }} >
+        <Link to={`chatview/${el.idid}`} state={{ user: el }} key={el.idid}>
           <div className="chatpreview">
             <img className="chatpic" src={el.img} alt="matchpic"></img>
             <div className="msgheader">

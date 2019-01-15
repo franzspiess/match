@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import profile from '../mocks/profile';
 import { Redirect, Link } from '@reach/router'
 
 
@@ -19,7 +18,6 @@ class Profile extends Component {
   }
 
   render () {
-    console.log(this.state);
 
     if (!localStorage.getItem('token')) return <Redirect to="/" />
     else {
@@ -66,7 +64,7 @@ class Profile extends Component {
           </div>
           <button className="profile-button" onClick={(e) => this.props.updateUser(this.state)} >Change</button>
 
-          <button className="logout-button" onClick={this.props.logout}>LogOut</button>
+          <Link to="/" className="logout-button" onClick={this.props.logout}>LogOut</Link>
 
 
         </div>

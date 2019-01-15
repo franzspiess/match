@@ -4,10 +4,6 @@ import { Link } from '@reach/router'
 const Matched = (props) => {
 
   const { matches } = props;
-  const {myUser} = props;
-  console.log(matches,'m');
-
-
 
     const myMatches = matches.map(el => {
 
@@ -15,17 +11,12 @@ const Matched = (props) => {
         console.log(el.idid)
 
         return (
-        <Link to = {`chatview/${el.idid}`} state={{user:el}} >
+        <Link to = {`chatview/${el.idid}`} state={{user:el}} key={el.idid} >
         <img className="chatpic" src={el.img} alt="matchimg"></img>
         </Link>
     )
       }
-
-
-
     });
-
-
 
   if (matches && myMatches) {
   return (

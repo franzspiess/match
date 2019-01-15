@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Redirect } from '@reach/router';
+import { Router } from '@reach/router';
 import Nav from './containers/Nav';
 import Match from './containers/Match';
 import Profile from './containers/Profile';
@@ -227,9 +227,7 @@ class App extends Component {
 
         <Router>
           <Login path="/" login={this.login.bind(this)} />
-
           <Create path="create" create={this.create} />
-
         </Router>
       </div>)
 

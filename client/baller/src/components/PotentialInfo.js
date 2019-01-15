@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardWrapper } from 'react-swipeable-cards';
 import infoimg from '../files/info2.svg';
-import racketimg from '../files/racket1.svg';
 
 
 class UserInfo extends Component {
@@ -19,29 +18,7 @@ class UserInfo extends Component {
   render () {
 
 
-
-
-
-    const { potentials, yes, no, newMatch, currentPotential, toggleNew } = this.props;
-
-    console.log(potentials)
-
-
-    // const myStyle = {
-    //   backgroundImage: `url(${user.img})`,
-    //   backgroundSize: 'cover',
-    //   backgroundPosition: 'center',
-    //   backgroundRepeat: 'no-repeat',
-    //   alignSelf: 'center'
-    // }
-
-    // const wrapperStyle = {
-    //   height: '60vh',
-    //   width: '70vw'
-
-    // }
-
-
+    const { potentials, yes, no} = this.props;
 
 
     const theEnd = () => {
@@ -49,7 +26,7 @@ class UserInfo extends Component {
         <div>
           <div className="logo">
           <span className="mylogo">MATCH</span>
-           <span className="test">No Players Near You</span>
+           <span className="noplayers">No Players Near You</span>
         </div>
 
 
@@ -58,22 +35,14 @@ class UserInfo extends Component {
     }
 
 
-
-
-
-    // const endCard = () => {
-    //   return (<div>TEST</div>)
-    //   }
-
-
     const cards = potentials.map(user => {
-      // const describe = () => { return ()}
+
 
       let skill = Array(Number(user.skill)).fill('🎾')
 
       let skillArr = skill.map(racket => {
         return (
-          <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" ></img>
+          <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" alt="ball" ></img>
         )
       });
 
@@ -104,7 +73,7 @@ class UserInfo extends Component {
           <div className="userinfo">
             <div className="username">{user.first}, {user.age}</div>
             <div className="descriptiondiv">
-              <img className="userdescription description-button" src={infoimg} onClick={this.click}></img>
+              <img className="userdescription description-button" src={infoimg} onClick={this.click} alt="img"></img>
             </div>
 
           </div>
@@ -118,12 +87,6 @@ class UserInfo extends Component {
 
     if (potentials) {
 
-      // let skill = Array(Number(currentPotential.skill)).fill('🎾').join('');
-
-      // console.log(skill);
-
-
-
 
       return (
         <div className="usercontainer">
@@ -131,25 +94,6 @@ class UserInfo extends Component {
             {cards}
           </CardWrapper>
         </div>
-
-        // <div className="usercontainer">
-        //   <div className="pic" style={myStyle}>
-        //     {/* <img  src={currentPotential.img} alt="user"></img> */}
-        //   </div>
-
-
-
-
-        //   <div className="userinfo">
-        //     <div className="username">{currentPotential.first}, {currentPotential.age}</div>
-        //     {/* <div className="userage"></div> */}
-        //     <div className="userskill">{skill}</div>
-        //   </div>
-
-        // // </div>
-
-
-
 
       );
     }

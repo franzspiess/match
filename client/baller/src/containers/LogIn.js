@@ -41,7 +41,7 @@ class LogIn extends Component {
         <form className="login-form" onSubmit={this.handleSubmit}>
           <input type="text" className="form-text form-item" placeholder="Username" name="email" onChange={this.handleChange} value={this.state.email} />
           <input type="text" className="form-text form-item" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password}></input>
-          <input type="submit" className="form-btn form-item" value="Submit"></input>
+          <input type="submit" className="form-btn form-item" value="SUBMIT"></input>
         </form>
 
 
