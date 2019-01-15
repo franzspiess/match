@@ -1,3 +1,17 @@
+/* * {
+  margin:0px;
+  padding: 0px;
+  border: 1px solid red;
+
+} */
+
+@media screen and  (min-width: 500px) {
+  * {
+    max-width: 420px;
+    max-height: 800px;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,7 +20,476 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display:flex;
 }
+.main-container {
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login, .create {
+  display:flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.user-create-input {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:flex-end;
+}
+.form-select {
+  border: 0 transparent;
+  height: 4vh;
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 4vh;
+
+}
+
+
+
+
+.form-btn {
+  border-style: none;
+  border-radius: 4px;
+  height: 4vh;
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 4vh;
+  margin-top: 1vh;
+}
+button{
+  border: 0px;
+}
+.logo {
+  margin-top: 10vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+
+}
+.mylogo {
+  font-family: 'Megrim', cursive;
+  font-size: 9vh;
+}
+#upload_widget {
+  padding:0;
+  background-color: #DCDCDC;
+  width: 60vw;
+  color: black;
+
+}
+
+
+.create-account {
+  display:flex;
+  background-color: #DCDCDC;
+  margin-top:5vh;
+  height:5vh;
+  align-items: center;
+  padding: 1vh;
+}
+
+.login-button {
+  margin-bottom: 5vh;
+  height: 5vh;
+
+}
+
+.login-link {
+  display:flex;
+  flex-direction:column;
+}
+
+.login-form, .create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.create-form {
+  margin-top: 2vh;
+}
+
+.form-item {
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 3vh;
+}
+
+
+.navbar {
+  /* background-color: #DCDCDC; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 14vh;
+  border-bottom: black 1px solid;
+
+}
+.profilebox,.matchbox, .chatview {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height: 86vh;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+.profile {
+  display:flex;
+  margin-top: 4vh;
+  width: 80vw;
+  justify-content: space-between;
+  font-weight:bold;
+}
+.profile-button {
+  width:30vw;
+  margin-top:7vh;
+  height:5vh;
+  font-weight: bold;
+
+}
+.logout-button {
+  width: 30vw;
+  position: absolute;
+  bottom: 5vh;
+  background-color: red;
+  height: 5vh;
+  font-weight: bold;
+}
+
+.value {
+  margin-left: 2vh;
+}
+
+.sport-input {
+  width:50vw;
+}
+.skilldiv .rangediv {
+  width:50vw;
+}
+.ranger {
+  width:38vw;
+}
+.usercontainer  {
+  margin-top: 2vh;
+  display:flex;
+  flex-direction: column;
+  width: 100vw;
+  flex: 7;
+  align-items:space-around;
+  justify-content:center;
+}
+
+/* .container {
+  width: 70vw;
+  height:60vh;
+  margin-top:5vh;
+
+} */
+/* .cards_container {
+  width: 80vw;
+  height:60vh;
+  align-self:center;
+  justify-self:center;
+
+} */
+
+
+.navbutton {
+  height: 8vh;
+  width: 15vw;
+}
+.navmatch {
+  margin-top: 3vh;
+}
+
+.profilpic {
+  border-radius: 100%;
+  background-image: url('./files/nadal2.jpg');
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+/* .userpic {
+  display:flex;
+  width: 80%;
+  height: 70vh;
+} */
+
+.pic {
+  margin: 2vh;
+  height:80%;
+  width: 80%;
+  background-size:cover;
+  background-position: center;
+background-repeat: no-repeat;
+  align-self: center;
+}
+
+.userinfo {
+  font-size:5vh;
+  display:flex;
+  width:100%;
+  justify-self:center;
+  justify-content: space-around;
+  margin-bottom: 2vh;
+
+
+}
+
+.username {
+  background-color: white;
+  padding: 0 2%;
+  font-weight: bold;
+  text-align: center;
+  text-justify: center;
+  border-radius: 8px;
+}
+
+
+.thedescription {
+  width: 95%;
+  align-self:center;
+  background-color: #DCDCDC;
+  position:absolute;
+  bottom: 18%;
+  padding: 0.3vh;
+  border-radius: 8px;
+}
+.descriptiondiv {
+  background-color: white;
+  padding: 0 0.5vh;
+  border-radius: 8px;
+}
+
+.userdescription {
+  height: 3vh;
+  width: 3vh;
+
+}
+.userskill {
+  margin: 2.7vh 2.7vh;
+  display:flex;
+
+}
+
+.skillimg{
+  margin-bottom: 0.5vh;
+  height: 3vh;
+  width: 3vh;
+}
+
+.decision-container {
+  /* background-color: #DCDCDC; */
+  display: flex;
+  height: 14vh;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  /* border-top: 1px solid black; */
+}
+
+
+.decide {
+  border-radius:100%;
+  height: 8vh;
+  width: 8vh;
+  /* background-color: #DCDCDC; */
+}
+
+
+
+.yes {
+  background-image: url('./files/tick3.svg');
+  background-size: cover;
+
+}
+
+.no {
+  background-image: url('./files/cross3.svg');
+  background-size: cover;
+
+
+}
+
+
+.chatpic {
+  border-radius: 100%;
+  object-fit: fill;
+  height: 8vh;
+  width: 8vh;
+  margin-left:1vh;
+
+}
+
+.matched {
+  display:flex;
+  height: 12vh;
+  flex-direction:row;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  border-bottom: 1px solid black;
+
+}
+
+.chatoverview {
+  display: flex;
+  flex-direction: column;
+  flex: 7;
+  width:100vw;
+
+
+}
+
+a,
+.chatoverview > a,
+.chatoverview > a:visited
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+.chatpreview {
+  display:flex;
+  flex-direction: row;
+  height: 12vh;
+  align-items:center;
+  overflow-y:scroll;
+}
+
+.msgheader {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.msgname {
+
+  font-weight: bold;
+}
+.msgpreview {
+  margin-left: 3vh;
+  text-decoration: none;
+}
+
+.message-container {
+  display:flex;
+  flex-direction: column;
+  height: 74vh;
+  overflow-y: scroll;
+}
+
+
+.the-message-list {
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+.chatpartner {
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 1vh 0;
+  width: 100vw;
+}
+.sub-partner {
+  display: flex;
+  justify-self: flex-start;
+  justify-content: flex-start;
+
+
+}
+
+
+
+.inchatpic {
+  margin-left: 2vh;
+}
+.partnername {
+  font-weight: bold;
+  align-self:center;
+  margin-left:3vh;
+}
+.chatdescription {
+  width:3vh;
+  height:3vh;
+  align-self: center;
+
+}
+.description-box-chat {
+  background-color: #DCDCDC;
+  width: 90vw;
+  margin-top: 1vh;
+  align-self: center;
+  z-index:100;
+  height:58vh;
+  border: 1px solid black;
+  padding: 1vh;
+  border-radius: 4px;
+
+
+
+
+}
+
+.message {
+  display: flex;
+  width: 60vw;
+  max-width: 60vw;
+  text-justify: center;
+  padding: 0.1vh 0.7vh;
+  margin-top: 1vh;
+  border: 1px solid black;
+  border-radius:4px;
+  background-color: #DCDCDC;
+
+
+}
+
+.received {
+  align-self: flex-start;
+  margin-left: 3vh;
+}
+
+.sent {
+  align-self: flex-end;
+  margin-right: 3vh;
+
+}
+
+.inputbox {
+  height:12vh;
+  background-color: #DCDCDC;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  position: fixed;
+  top: 47%;
+  left: 40%;
+
+}
+
+
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
