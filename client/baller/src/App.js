@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 import Nav from './containers/Nav';
 import Match from './containers/Match';
 import Profile from './containers/Profile';
@@ -7,20 +7,38 @@ import MyMatches from './containers/MyMatches';
 import Chat from './containers/Chat';
 import Login from './containers/LogIn';
 import Create from './containers/Create';
-import { Card, CardWrapper } from 'react-swipeable-cards';
+
 
 import './App.css';
-const url = 'http://192.168.1.207:3000'
+const url = 'http://localhost:3000'
 
 class App extends Component {
 
   state = {
-    loading: true
+    loading: true,
+    located: [],
+    matches: [],
+    potentials: [],
+    myUser: {},
+    new: false
+  }
+
+  toggleNew = () => {
+    this.setState({new:false})
+  }
+  success = (located) => {
+    const { latitude, longitude } = located.coords;
+    this.setState({ located: [longitude, latitude] }, () => console.log('location', this.state.located));
+
+
+
   }
 
   create = (e) => {
     let user = e;
-    console.log(user);
+    navigator.geolocation.getCurrentPosition(this.success);
+    user.located = this.state.located;
+
 
     fetch(`${url}/create`, {
       method: 'post',
@@ -30,20 +48,22 @@ class App extends Component {
       body: JSON.stringify(user)
     })
       .then(async res => {
-        if (res.status === 401) {alert('User already exists')}
-        else if (res.status === 401) {alert('Wrong password.')}
-        else if (res.status === 201) {
-          const myUser = await res.json();
-          console.log(myUser)
-          this.setState({ myUser });
-          localStorage.setItem('token', myUser.token);
-          localStorage.setItem('userID', myUser.idid)
-          console.log(this.state.myUser)
+        try {
+          if (res.status === 401) { alert('User already exists') }
+          else if (res.status === 401) { alert('Wrong password.') }
+          else if (res.status === 201) {
+            const myUser = await res.json();
+            localStorage.setItem('token', myUser.token);
+            localStorage.setItem('userID', myUser.idid)
+            this.setState({ myUser });
+          }
+          else { alert('Unknown error') }
         }
-        else {alert('Unknown error')}
+        catch (err) { console.log(err) }
       })
       .then(this.fetchAndSetMatches)
-      .then(this.fetchAndSetPotentials);
+      .then(this.fetchAndSetPotentials)
+    // .catch(err => console.log('jsfhsjdhfjdshfjdsjghdsjgsk',err));
 
 
   }
@@ -77,7 +97,9 @@ class App extends Component {
           console.log(this.state.myUser)
 
         }
-      });
+      })
+      .then(this.fetchAndSetMatches)
+      .then(this.fetchAndSetPotentials);
   }
 
 
@@ -103,12 +125,12 @@ class App extends Component {
     this.setState({ potentials, currentPotential })
     fetch(`${url}/setmatch/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
       // .then(res => JSON.parse(res))
-      .then(res => console.log(res))
-      .then(() => {
-        let potentials = this.state.potentials;
-        let currentPotential = potentials.shift();
-        this.setState({ potentials, currentPotential });
-      })
+      // .then(res => console.log(res.json()))
+      // .then(() => {
+      //   let potentials = this.state.potentials;
+      //   let currentPotential = potentials.shift();
+      //   this.setState({ potentials, currentPotential });
+      // })
       .then(this.fetchAndSetMatches);
 
   }
@@ -119,12 +141,12 @@ class App extends Component {
     let currentPotential = potentials.shift();
     this.setState({ potentials, currentPotential })
     fetch(`${url}/setdecline/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
-      .then(res => console.log(res))
-      .then(() => {
-        let potentials = this.state.potentials;
-        let currentPotential = potentials.shift();
-        this.setState({ potentials, currentPotential });
-      })
+      // .then(res => console.log(res.json()))
+      // .then(() => {
+      //   let potentials = this.state.potentials;
+      //   let currentPotential = potentials.shift();
+      //   this.setState({ potentials, currentPotential });
+      // })
       .then(this.fetchAndSetMatches);
   }
 
@@ -135,12 +157,14 @@ class App extends Component {
       .then(result => result.json())
       .then(potentials => {
         let currentPotential = potentials[0];
-        this.setState({ potentials, currentPotential });
-        this.setState({ loading: false });
+
+        this.setState({ currentPotential, potentials });
+        this.setState({ loading: false })
         console.log(this.state, 'end');
 
 
       })
+      .catch(err => console.log(err));
 
   }
 
@@ -171,13 +195,15 @@ class App extends Component {
     fetch(`${url}/matches/7`)
       .then(result => result.json())
       .then(matches => {
-        console.log(matches);
+        console.log('matches', matches);
         // if (this.state && this.state.matches) matches.length > this.state.matches.length && alert('a');
-
 
         this.setState({ matches });
 
       })
+  }
+  showPosition = (position) => {
+    return position.coords;
   }
 
 
@@ -189,6 +215,7 @@ class App extends Component {
     this.fetchAndSetPotentials();
 
 
+
   }
 
 
@@ -196,27 +223,28 @@ class App extends Component {
 
     console.log(this.state)
 
-    if (localStorage.getItem('token')) return (
+    if (!localStorage.getItem('token')) return (
       <div>
 
         <Router>
-          <Login  path="/" login={this.login.bind(this)} />
+          <Login path="/" login={this.login.bind(this)} />
+
           <Create path="create" create={this.create} />
+
         </Router>
-      </div>
-    )
+      </div>)
+
 
     if (!this.state.loading) {
 
-      // if (!this.state.loading) {
+
       return (
         <div className="main-container">
 
           <Nav />
           <Router>
-            <Create path="create" create />
-            <Profile path="profile" myUser={this.state.myUser} updateUser={this.updateUser.bind(this)} logout={this.logout} />
-            <Match path="/" yes={this.matchCurrentPotential.bind(this)} no={this.declineCurrentPotential.bind(this)} potentials={this.state.potentials} length={this.state.matches.length} />
+            <Profile path="profile" myUser={this.state.myUser} updateUser={this.updateUser} logout={this.logout}/>
+            <Match path="/" yes={this.matchCurrentPotential.bind(this)} no={this.declineCurrentPotential.bind(this)} potentials={this.state.potentials} new={this.state.new} toggleNew={this.toggleNew} />
             <MyMatches path="mymatches" matches={this.state.matches} myUser={this.state.myUser} />
             <Chat path="mymatches/chatview/:userId" post={this.postMsgToServer.bind(this)} matches={this.state.matches} />
           </Router>
@@ -231,7 +259,7 @@ class App extends Component {
       // else return (<div>Loading</div>);
     }
 
-    else return (<div class="loading">LOADING</div>);
+    else return (<div className="loading">LOADING</div>);
   }
 }
 

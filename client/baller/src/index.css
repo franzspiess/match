@@ -36,11 +36,36 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
+}
+.user-create-input {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:flex-end;
+}
+.form-select {
+  border: 0 transparent;
+  height: 4vh;
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 4vh;
 
 }
-button{
+
+
+
+
+.form-btn {
   border-style: none;
+  border-radius: 4px;
+  height: 4vh;
+  margin-bottom: 2vh;
+  width: 60vw;
+  height: 4vh;
+  margin-top: 1vh;
+}
+button{
+  border: 0px;
 }
 .logo {
   margin-top: 10vh;
@@ -54,6 +79,14 @@ button{
   font-family: 'Megrim', cursive;
   font-size: 9vh;
 }
+#upload_widget {
+  padding:0;
+  background-color: #DCDCDC;
+  width: 60vw;
+  color: black;
+
+}
+
 
 .create-account {
   display:flex;
@@ -70,6 +103,11 @@ button{
 
 }
 
+.login-link {
+  display:flex;
+  flex-direction:column;
+}
+
 .login-form, .create-form {
   display: flex;
   flex-direction: column;
@@ -77,7 +115,7 @@ button{
   justify-content: center;
 }
 .create-form {
-  margin-top: 10vh;
+  margin-top: 2vh;
 }
 
 .form-item {
@@ -88,7 +126,7 @@ button{
 
 
 .navbar {
-  background-color: #DCDCDC;
+  /* background-color: #DCDCDC; */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -101,35 +139,47 @@ button{
   flex-direction: column;
   align-items: center;
   height: 86vh;
+  font-family: 'Saira Condensed', sans-serif;
 }
-
-
-
 
 .profile {
   display:flex;
   margin-top: 4vh;
   width: 80vw;
   justify-content: space-between;
+  font-weight:bold;
 }
 .profile-button {
-  margin-top:4vh;
+  width:30vw;
+  margin-top:7vh;
+  height:5vh;
+  font-weight: bold;
 
 }
 .logout-button {
+  width: 30vw;
   position: absolute;
   bottom: 5vh;
   background-color: red;
   height: 5vh;
+  font-weight: bold;
 }
 
 .value {
   margin-left: 2vh;
 }
+
 .sport-input {
   width:50vw;
 }
+.skilldiv .rangediv {
+  width:50vw;
+}
+.ranger {
+  width:38vw;
+}
 .usercontainer  {
+  margin-top: 2vh;
   display:flex;
   flex-direction: column;
   width: 100vw;
@@ -157,6 +207,9 @@ button{
   height: 8vh;
   width: 15vw;
 }
+.navmatch {
+  margin-top: 3vh;
+}
 
 .profilpic {
   border-radius: 100%;
@@ -182,65 +235,77 @@ background-repeat: no-repeat;
 }
 
 .userinfo {
+  font-size:5vh;
   display:flex;
-  width:90vw;
+  width:100%;
   justify-self:center;
   justify-content: space-around;
+  margin-bottom: 2vh;
 
-  position:absolute;
-  bottom: 2vh;
+
 }
 
 .username {
-  padding: 0 1vw;
-  background-color: #DCDCDC;
+  background-color: white;
+  padding: 0 2%;
   font-weight: bold;
   text-align: center;
+  text-justify: center;
+  border-radius: 8px;
+}
+
+
+.thedescription {
+  width: 95%;
+  align-self:center;
+  background-color: #DCDCDC;
+  position:absolute;
+  bottom: 18%;
+  padding: 0.3vh;
+  border-radius: 8px;
+}
+.descriptiondiv {
+  background-color: white;
+  padding: 0 0.5vh;
+  border-radius: 8px;
 }
 
 .userdescription {
   height: 3vh;
   width: 3vh;
-}
-.thedescription {
-  width: 80vw;
-  align-self:center;
-  background-color: #DCDCDC;
-  position:absolute;
-  bottom: 7vh;
-  padding: 0.3vh;
-  border-radius: 8px;
-}
-.descriptiondiv {
-  background-color: #DCDCDC;
-  border-radius: 100%;
-  width:3vh;
-  height:3vh;
+
 }
 .userskill {
-  padding: 0 1vw;
-  background-color: #DCDCDC;
+  margin: 2.7vh 2.7vh;
+  display:flex;
+
+}
+
+.skillimg{
+  margin-bottom: 0.5vh;
+  height: 3vh;
+  width: 3vh;
 }
 
 .decision-container {
-  background-color: #DCDCDC;
+  /* background-color: #DCDCDC; */
   display: flex;
   height: 14vh;
   align-items: center;
   width: 100%;
   justify-content: space-around;
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
 }
 
 
 .decide {
-
   border-radius:100%;
   height: 8vh;
   width: 8vh;
-  background-color: #DCDCDC;
-
+  /* background-color: #DCDCDC; */
 }
+
+
 
 .yes {
   background-image: url('./files/tick3.svg');
@@ -321,20 +386,34 @@ a,
   display:flex;
   flex-direction: column;
   height: 74vh;
+  overflow-y: scroll;
 }
 
-.chatbox {
+
+.the-message-list {
   display: flex;
   flex-direction: column;
-  height: 86vh;
+
+
 
 }
 .chatpartner {
   display:flex;
-  align-self: flex-start;
+  align-items: center;
+  justify-content: space-around;
   flex-direction: row;
   padding: 1vh 0;
+  width: 100vw;
 }
+.sub-partner {
+  display: flex;
+  justify-self: flex-start;
+  justify-content: flex-start;
+
+
+}
+
+
 
 .inchatpic {
   margin-left: 2vh;
@@ -344,14 +423,40 @@ a,
   align-self:center;
   margin-left:3vh;
 }
+.chatdescription {
+  width:3vh;
+  height:3vh;
+  align-self: center;
+
+}
+.description-box-chat {
+  background-color: #DCDCDC;
+  width: 90vw;
+  margin-top: 1vh;
+  align-self: center;
+  z-index:100;
+  height:58vh;
+  border: 1px solid black;
+  padding: 1vh;
+  border-radius: 4px;
+
+
+
+
+}
 
 .message {
+  display: flex;
+  width: 60vw;
+  max-width: 60vw;
+  text-justify: center;
   padding: 0.1vh 0.7vh;
   margin-top: 1vh;
   border: 1px solid black;
-  border-radius:17%;
+  border-radius:4px;
   background-color: #DCDCDC;
-  max-width:80vw;
+
+
 }
 
 .received {
@@ -362,6 +467,7 @@ a,
 .sent {
   align-self: flex-end;
   margin-right: 3vh;
+
 }
 
 .inputbox {

@@ -2,15 +2,20 @@ const chats = [
 
   {
     id1: '7',
-    id2: '1',
+    id2: '12',
     messages: [{
-      content: 'Hello world',
-      author: '1',
+      content: 'Hey, I\'m Andy',
+      author: '12',
       timestamp: Date.now()
     }]
   },
   {
     id1: '7',
+    id2: '11',
+    messages: []
+  },
+  {
+    id1: '5',
     id2: '2',
     messages: [{
       content: 'Hello world',
@@ -28,23 +33,13 @@ const chats = [
     }]
   },
   {
-    id1: '7',
+    id1: '1',
     id2: '3',
     messages: [{
       content: 'Yo, what\'s up',
       author: '2',
       timestamp: Date.now()
     }]
-  },
-  {
-    id1: '7',
-    id2: '5',
-    messages: []
-  },
-  {
-    id1: '7',
-    id2: '6',
-    messages: []
   }
 ]
 

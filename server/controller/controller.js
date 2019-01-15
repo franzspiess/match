@@ -52,7 +52,7 @@ module.exports.create = async (ctx, next) => {
       skill: user.skill,
       age: user.age,
       img: 'https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547042159/userpics/nadal2.jpg',
-      location: [2.154007, 41.390205],
+      located: [2.154007, 41.390205],
       matches: [],
       declined: [],
       flag: [],
@@ -162,7 +162,9 @@ module.exports.getPotentials = async (ctx, next) => {
 
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id });
-  let theList = await users.find({$and:[{ location: { $near: myUser.location, $maxDistance: 3000 }, skill: myUser.skill, sport: myUser.sport }]});
+  console.log(myUser);
+  let theList = await users.find({$and:[{located: { $near: myUser.located, $maxDistance:3000 }, skill: myUser.skill, sport: myUser.sport }]});
+  console.log('the list',theList);
 
   let declined = myUser.declined;
   let matches = myUser.matches;
@@ -170,6 +172,7 @@ module.exports.getPotentials = async (ctx, next) => {
 
     return (!declined.includes(user.idid) && !matches.includes(user.idid));
   })
+  console.log('aasksasad new List',newList);
 
   ctx.status = 201;
   ctx.body = newList;
@@ -179,6 +182,7 @@ module.exports.getMatches = async (ctx, next) => {
 
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id })
+  console.log(myUser)
   let matches = await users.find({ matches: id });
   let myMatches = myUser.matches;
 
@@ -218,6 +222,8 @@ module.exports.getMatches = async (ctx, next) => {
 
 module.exports.getProfile = async (ctx, next) => {
 
+
+
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id })
 
@@ -244,7 +250,7 @@ const setUsers = (arr) => {
   console.log('setting', arr);
 
   users.insert(arr);
-  users.createIndex({ location: "2d" })
+  users.createIndex({ located: "2d" })
 
 
 }

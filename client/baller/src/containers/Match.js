@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import users from '../mocks/users';
 import PotentialInfo from '../components/PotentialInfo';
 import Decision from '../components/Decision';
 
 
 class Match extends Component {
-
-
-
-
 
   render () {
 
@@ -20,7 +15,7 @@ class Match extends Component {
     if (this.props.potentials) {
       return (
 
-        <div class="matchbox">
+        <div className="matchbox">
 
           <PotentialInfo  potentials={this.props.potentials} length={this.props.length} yes = {yes} no={no}/>
           <Decision yes = {yes} no={no}/>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardWrapper } from 'react-swipeable-cards';
-import infoimg from '../files/info1.svg';
+import infoimg from '../files/info2.svg';
+import racketimg from '../files/racket1.svg';
 
 
 class UserInfo extends Component {
@@ -21,15 +22,10 @@ class UserInfo extends Component {
 
 
     const { potentials } = this.props;
-    const { length } = this.props;
     const { yes } = this.props;
     const { no } = this.props;
 
-    console.log(oldLength, currentPotential, length);
 
-
-
-    if (oldLength && currentPotential && length > oldLength) alert('hola');
 
     // const myStyle = {
     //   backgroundImage: `url(${user.img})`,
@@ -39,44 +35,62 @@ class UserInfo extends Component {
     //   alignSelf: 'center'
     // }
 
-    const wrapperStyle = {
-      height: '60vh',
-      width: '70vw'
+    // const wrapperStyle = {
+    //   height: '60vh',
+    //   width: '70vw'
 
-    }
-    const cardStyle = {
+    // }
 
-    }
+
+
+
+
 
     let oldLength = potentials.length;
-    let currentPotential = potentials[0];
+    // let currentPotential = potentials[0];
 
     console.log(oldLength)
 
+    // const endCard = () => {
+    //   return (<div>TEST</div>)
+    //   }
+
+
     const cards = potentials.map(user => {
       // const describe = () => { return ()}
-      console.log(user);
-      let skill = Array(Number(user.skill)).fill('🎾').join('');
+
+      let skill = Array(Number(user.skill)).fill('🎾')
+
+      let skillArr = skill.map(racket => {
+        return (
+          <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" ></img>
+          )
+        });
+
+        console.log(skillArr);
       const myStyle = {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
         backgroundImage: `url(${user.img})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         alignSelf: 'center',
-        justifyContent: 'space-between'
+        width: '84%',
+        height: '94%',
+        marginTop: '4vh;'
       }
 
       return (
         <Card style={myStyle} key={user.id} onSwipeRight={yes} onSwipeLeft={no}>
           {this.state.show ? <div className="thedescription">{user.description}</div> : null}
           <div className="userinfo">
-            <div className="username">{user.first}, {user.age}</div><div className="descriptiondiv">
+            <div className="username">{user.first}, {user.age}</div>
+            <div className="descriptiondiv">
               <img className="userdescription description-button" src={infoimg} onClick={this.click}></img>
             </div>
-            <div className="userskill">{skill}</div>
+
           </div>
 
         </Card>
