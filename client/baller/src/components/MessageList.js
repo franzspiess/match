@@ -50,29 +50,29 @@ class MessageList extends Component {
 
 
     if (messages.length) {
-      let i = 0;
-      messageView = messages.map(message => {
+
+      messageView = messages.map((message,index )=> {
 
         let tag;
         message.author === user.idid ? tag = received : tag = sent;
         // console.log(message, tag)
         return (
-          <div className={`message ${tag}`} key={i}>{message.content}</div>
+          <div className={`message ${tag}`} key={index}>{message.content}</div>
         )
 
       })
     }
 
     if (messageView && messageView.length) return (
-      <div className="message-container">
+      <div className="message-container" >
         <div className="chatpartner">
           <div className="sub-partner">
-            <img className="chatpic inchatpic" src={user.img} alt="matchpic" onClick></img>
+            <img className="chatpic inchatpic" src={user.img} alt="matchpic"></img>
             <div className="partnername">{user.first}, {user.age}</div>
           </div>
           <img className="chatdescription" src={infoimg} onClick={this.click} alt="info"></img>
         </div>
-        {this.state.show ? <div className="description-box-chat">{user.description}</div> :
+        {this.state.show ? <div className="description-box-chat" key={`b +${user.idid}`}>{user.description}</div> :
           <div className="the-message-list">{messageView}</div>}
 
 

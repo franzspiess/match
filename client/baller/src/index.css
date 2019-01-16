@@ -1,20 +1,8 @@
-/* * {
-  margin:0px;
-  padding: 0px;
-  border: 1px solid red;
 
-} */
 
-@media screen and  (min-width: 500px) {
-  * {
-    max-width: 420px;
-    max-height: 800px;
-  }
-}
-
-Link {
+/* Link {
   width:
-}
+} */
 
 body {
   margin: 0;
@@ -160,8 +148,9 @@ button{
   height: 86vh;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 4vh;
-  margin-bottom:
+
 }
+
 .newmatch-notify {
   font-family: 'Saira Condensed', sans-serif;
 }

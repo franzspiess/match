@@ -54,13 +54,13 @@ class Profile extends Component {
             <span className="title" >Skill:</span>
             <div className="skilldiv">
               <span className="skilltitle">{this.state.skill} /5</span>
-              <input type="range" className="value skill-input ranger" min="1" max="5" placeholder={this.state.skill + '/5'} onChange={(e) => this.setState({ skill: e.target.value })}></input></div>
+              <input type="range" className="value skill-input ranger" min="1" max="5" defaultValue={this.state.skill}  onChange={(e) => this.setState({ skill: e.target.value })}></input></div>
           </div>
           <div className="profile distance">
             <span className="title" >Distance:</span>
             <div className="rangediv">
               <span className="rangetitle">{this.state.distance} km</span>
-            <input type="range" className="value distance-input ranger" min="1" max="50" placeholder={this.state.distance} onChange={(e) => this.setState({ distance: e.target.value })}></input></div>
+            <input type="range" className="value distance-input ranger" min="1" max="50" placeholder={this.state.distance} defaultValue={this.state.distance} onChange={(e) => this.setState({ distance: e.target.value })}></input></div>
           </div>
           <button className="profile-button" onClick={(e) => this.props.updateUser(this.state)} >Change</button>
 

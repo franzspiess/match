@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router } from '@reach/router';
+import openSocket from 'socket.io-client';
 import Nav from './containers/Nav';
 import Match from './containers/Match';
 import Profile from './containers/Profile';
@@ -10,9 +11,12 @@ import Create from './containers/Create';
 
 
 import './App.css';
+
 const url = 'http://localhost:3000'
+const socket = openSocket(url);
 
 class App extends Component {
+
 
   state = {
     loading: true,
@@ -101,6 +105,7 @@ class App extends Component {
 
 
   postMsgToServer (msg, user) {
+    socket.emit('sendmsg',msg);
     let toPost = {
       msg,
       id: user.idid,
@@ -208,13 +213,11 @@ class App extends Component {
 
   componentDidMount () {
 
-
     this.fetchAndSetUser();
     this.fetchAndSetMatches();
     this.fetchAndSetPotentials();
 
-
-
+    document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
   }
 
 

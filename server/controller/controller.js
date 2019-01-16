@@ -9,6 +9,11 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const uuidv4 = require('uuid/v4');
 
+
+
+
+
+
 const users = db.get('users');
 const chats = db.get('chats');
 
@@ -26,12 +31,10 @@ const chats = db.get('chats');
 module.exports.create = async (ctx, next) => {
 
   let user = ctx.request.body;
-  console.log(user);
-
   let dbUser = await users.findOne({ email: user.email });
-  console.log(dbUser);
 
   if (dbUser) ctx.status = 401;
+
   else {
     let hash = new Promise((resolve) => {
       bcrypt.hash(user.password, saltRounds, (err, hash) => {
@@ -49,10 +52,11 @@ module.exports.create = async (ctx, next) => {
       token,
       first: user.first,
       last: user.last,
-      skill: user.skill,
+      skill: '3',
       age: user.age,
       img: user.img,
       located: [2.154007, 41.390205],
+      distance: 3000,
       matches: [],
       declined: [],
       flag: [],
@@ -62,7 +66,7 @@ module.exports.create = async (ctx, next) => {
 
 
     let inserted = await users.insert(thisUser)
-    console.log(inserted);
+    console.log('Inserted to DB', inserted);
 
     ctx.status = 201;
     ctx.body = inserted;
@@ -88,7 +92,7 @@ module.exports.login = async (ctx, next) => {
       ctx.status = 201;
       // ctx.headers.authorization = dbUser.token;
       // dbUser.token = '';
-      console.log(dbUser, 'c')
+      console.log('Logged in', dbUser)
       ctx.body = dbUser;
 
 
@@ -119,16 +123,16 @@ module.exports.setMsg = async (ctx, next) => {
     timestamp: Date.now()
   }
 
-  console.log(msg, chatID);
+  console.log('Message to save: msg, chatID');
   let theLog = await chats.update({
     _id: chatID
   }, { $push: { messages: msg } });
 
+//FIX INSERT IF CHAT DOESNT EXIST YET
 
-  console.log(theLog);
-
-
-
+  // if (theLog.n !== 1) {
+  //     let chat:
+  // }
 }
 
 module.exports.setMatch = async (ctx, next) => {
@@ -164,17 +168,15 @@ module.exports.getPotentials = async (ctx, next) => {
 
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id });
-  console.log(myUser);
   let theList = await users.find({$and:[{located: { $near: myUser.located, $maxDistance:3000 }, skill: myUser.skill, sport: myUser.sport }]});
-  console.log('the list',theList);
+  ;
 
   let declined = myUser.declined;
   let matches = myUser.matches;
   let newList = theList.filter(user => {
-
     return (!declined.includes(user.idid) && !matches.includes(user.idid));
   })
-  console.log('aasksasad new List',newList);
+
 
   ctx.status = 201;
   ctx.body = newList;
@@ -184,7 +186,6 @@ module.exports.getMatches = async (ctx, next) => {
 
   let id = ctx.params.id;
   let myUser = await users.findOne({ idid: id })
-  console.log(myUser)
   let matches = await users.find({ matches: id });
   let myMatches = myUser.matches;
 
@@ -200,10 +201,7 @@ module.exports.getMatches = async (ctx, next) => {
   });
 
 
-
-
   let newestMatches = newMatches.map(match => {
-
     myChats.forEach(chat => {
 
       if (chat.id1 === match.idid || chat.id2 === match.idid) {
@@ -237,9 +235,9 @@ module.exports.getProfile = async (ctx, next) => {
 
 module.exports.setProfile = async (ctx, next) => {
 
-  console.log(ctx.request.body);
+
   let profile = ctx.request.body;
-  console.log(await users.update({idid : profile.idid},{profile}))
+  console.log('User Update Log', await users.update({idid : profile.idid},{profile}))
   ctx.status = 201;
   ctx.body = 'received';
 
@@ -249,7 +247,6 @@ module.exports.setProfile = async (ctx, next) => {
 
 const setUsers = (arr) => {
 
-  console.log('setting', arr);
 
   users.insert(arr);
   users.createIndex({ located: "2d" })
@@ -258,8 +255,6 @@ const setUsers = (arr) => {
 }
 
 const setChats = (arr) => {
-
-  console.log('setting', arr);
 
   chats.insert(arr);
 

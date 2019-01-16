@@ -33,11 +33,11 @@ const chats = [
     }]
   },
   {
-    id1: '1',
-    id2: '3',
+    id1: '7',
+    id2: '4',
     messages: [{
-      content: 'Yo, what\'s up',
-      author: '2',
+      content: 'Hey, I\m Alex',
+      author: '4',
       timestamp: Date.now()
     }]
   }
