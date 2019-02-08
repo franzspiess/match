@@ -13,8 +13,6 @@ class LogIn extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
-
   }
 
   handleSubmit = event => {
@@ -26,11 +24,8 @@ class LogIn extends Component {
     })
   }
 
-
   render () {
-
     return (
-
       <div className="login">
         <div className="logo">
           <span className="mylogo">MATCH</span>
@@ -43,19 +38,9 @@ class LogIn extends Component {
           <input type="password" className="form-text form-item" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password}></input>
           <input type="submit" className="form-btn form-item" value="SUBMIT"></input>
         </form>
-
-
-
-
       </div>
-
-
-
-
     )
-
   }
-
 }
 
 export default LogIn;

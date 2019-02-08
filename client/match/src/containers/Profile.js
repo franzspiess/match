@@ -14,19 +14,13 @@ class Profile extends Component {
       sport: this.props.myUser.sport,
       distance: this.props.myUser.distance/1000
     }
-
   }
 
   render () {
-
     if (!localStorage.getItem('token')) return <Redirect to="/" />
     else {
-
       return (
-
-
         <div className="profilebox">
-
           <div className="profile sport">
             <span className="title" >Sport:</span>
             <select className="value sport-input" name="carlist" form="carform" name="sport" onChange={e => this.setState({ sport: e.target.value })
@@ -63,21 +57,11 @@ class Profile extends Component {
             <input type="range" className="value distance-input ranger" min="1" max="50" placeholder={this.state.distance} defaultValue={this.state.distance} onChange={(e) => this.setState({ distance: e.target.value })}></input></div>
           </div>
           <button className="profile-button" onClick={(e) => this.props.updateUser(this.state)} >Change</button>
-
           <Link to="/" className="logout-button" onClick={this.props.logout}>LogOut</Link>
-
-
         </div>
-
-
       )
-
-
     }
-
   }
-
-
 }
 
 export default Profile;

@@ -4,22 +4,13 @@ import ballimg from '../files/ball4.png';
 import chatimg from '../files/chat3.svg';
 import profile from '../mocks/profile';
 
-
-// import profilimg from '../files/nadal1.jpg';
-
-
 class Nav extends Component {
 
   render () {
 
     const myStyle = {
       backgroundImage: `url(${profile.img})`
-
     }
-
-
-
-
 
     return (
       <div className="navbar">
@@ -32,9 +23,6 @@ class Nav extends Component {
         <Link to="mymatches">
           <img className="navbutton" src={chatimg} alt="chat"></img>
         </Link>
-
-
-
       </div>
     );
   }

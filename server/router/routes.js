@@ -1,9 +1,6 @@
 "use strict";
-
 const router = require('koa-router')();
-
-const controller = require('./controller/controller');
-
+const controller = require('../controller/controller');
 
 router.post('/create', controller.create)
 router.get('/login', controller.login)

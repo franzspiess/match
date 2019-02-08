@@ -6,18 +6,8 @@ import { Link } from '@reach/router';
 
 class Match extends Component {
 
-
   render () {
     const { yes, no, newMatch, currentPotential, toggleNew } = this.props;
-
-
-
-
-
-
-
-    console.log(currentPotential)
-
     if (newMatch && currentPotential) {
 
       const theStyle = {
@@ -51,16 +41,12 @@ class Match extends Component {
 
     else if (!this.newMatch && this.props.potentials) {
       return (
-
         <div className="matchbox">
-
           <PotentialInfo potentials={this.props.potentials} yes={yes} no={no} />
           <Decision yes={yes} no={no} />
-
         </div>
 
       );
-
     }
     else return null;
 
@@ -68,25 +54,3 @@ class Match extends Component {
 }
 
 export default Match;
-
-// getUsers = () => {
-
-//   this.setState({users});
-
-// }
-
-// updateUser = () => {
-//   if (this.state) {
-//   const myUsers = this.state.users;
-//   const user = myUsers.shift();
-//   console.log(user,'u')
-//   this.setState({...this.state,users: myUsers});
-//   this.setState({...this.state,user})
-//   console.log(this.state, 'u')
-
-//   }
-// }
- // fetch('http://localhost:3000/users/7')
-    //   .then(result => result.json())
-    //   .then(users => this.setState({ users }))
-    //   .then(this.updateUser)

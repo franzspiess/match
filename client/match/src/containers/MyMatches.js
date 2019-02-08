@@ -4,27 +4,15 @@ import Messages from '../components/Messages';
 
 class MyMatches extends Component {
 
-
-
-
-
   componentDidMount () {
-
    this.props.fetchAndSet();
-
   }
 
   render () {
 
-    console.log(this.props);
-
     const { matches } = this.props;
 
-
-
-
     if (this.props) {
-
 
       return (
         <div className="chatview">
@@ -33,16 +21,9 @@ class MyMatches extends Component {
         </div>
       )
     }
+
     else return null;
-
-
-
   }
-
-
-
-
-
 }
 
 export default MyMatches;

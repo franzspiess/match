@@ -12,40 +12,26 @@ class UserInfo extends Component {
     this.state.show ? this.setState({ show: false }) : this.setState({ show: true });
   }
 
-
-
+  theEnd = () => {
+    return (
+      <div>
+        <div className="logo">
+          <span className="mylogo">MATCH</span>
+          <span className="noplayers">No Players Near You</span>
+        </div>
+      </div>
+    )
+  };
 
   render () {
-
-
-    const { potentials, yes, no} = this.props;
-
-
-    const theEnd = () => {
-      return (
-        <div>
-          <div className="logo">
-          <span className="mylogo">MATCH</span>
-           <span className="noplayers">No Players Near You</span>
-        </div>
-
-
-        </div>
-      )
-    }
-
-
+    const { potentials, yes, no } = this.props;
     const cards = potentials.map(user => {
-
-
       let skill = Array(Number(user.skill)).fill('🎾')
-
       let skillArr = skill.map(racket => {
         return (
           <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" alt="ball" ></img>
         )
       });
-
 
       const myStyle = {
         display: 'flex',
@@ -75,39 +61,25 @@ class UserInfo extends Component {
             <div className="descriptiondiv">
               <img className="userdescription description-button" src={infoimg} onClick={this.click} alt="img"></img>
             </div>
-
           </div>
-
         </Card>
-
-
       )
     })
 
-
     if (potentials) {
-
-
       return (
         <div className="usercontainer">
-          <CardWrapper className="wrapper" addEndCard={theEnd}>
+          <CardWrapper className="wrapper" addEndCard={this.theEnd}>
             {cards}
           </CardWrapper>
         </div>
-
       );
     }
     else {
       return (
-
         <div>User not found!</div>
-
-
       );
-
     }
-
-
   };
 }
 

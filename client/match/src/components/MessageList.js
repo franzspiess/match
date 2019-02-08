@@ -8,58 +8,36 @@ class MessageList extends Component {
     showPic: false
   }
 
-
-
   click = () => {
     this.state.show ? this.setState({ show: false }) : this.setState({ show: true, showPic: false });
   }
 
   clickPic = () => {
     this.state.showPic ? this.setState({ showPic: false }) : this.setState({ showPic: true, show: false });
-
   }
-
-  // state = {
-  //   user: this.props.user
-  // }
-
-  // componentDidMount() {
-  //   this.setState({user:this.props.user})
-  // }
-
-
 
   render () {
     let userID = this.props.user.idid
     let user = this.props.matches.find(x => x.idid === userID);
     const messages = user.messages;
-
     const received = "received";
     const sent = "sent";
     let messageView = [];
-
     let skill = Array(Number(user.skill)).fill('🎾')
-
     let skillArr = skill.map(racket => {
       return (
         <img src='https://res.cloudinary.com/pinchepanchopincho/image/upload/v1547497115/styles/ball4.png' className="skillimg" alt="ball" ></img>
       )
     });
 
-
-
-
     if (messages.length) {
 
       messageView = messages.map((message,index )=> {
-
         let tag;
         message.author === user.idid ? tag = received : tag = sent;
-        // console.log(message, tag)
         return (
           <div className={`message ${tag}`} key={index}>{message.content}</div>
         )
-
       })
     }
 
@@ -97,7 +75,6 @@ class MessageList extends Component {
           </div> : null}
       </div>
     )
-
   }
 }
 
