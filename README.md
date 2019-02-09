@@ -7,10 +7,11 @@
 ### Playing sports - one MATCH at a time!
 
 
-
 MATCH is a Progressive Web App that helps you find sports partners near you. It only matches you with people that have your skill level, the easy-to-use chat and user descriptions ensure that you only meet with people you find sympathetic.
 
+
 ### FEATURES
+
 
 #### The Match Interface
 
