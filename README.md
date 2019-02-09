@@ -9,6 +9,8 @@
 
 MATCH is a Progressive Web App that helps you find sports partners near you. It only matches you with people that have your skill level, the easy-to-use chat and user descriptions ensure that you only meet with people you find sympathetic.
 
+The front-end is build as progressive web app with React and Reach-Router. The backend is a NodeJS server on Koa with a Mongo database. Socket.io will be implemented for live-chat features.
+
 
 ### FEATURES
 
