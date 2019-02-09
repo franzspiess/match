@@ -21,7 +21,7 @@ The front-end is build as progressive web app with React and Reach-Router. The b
 
 The Match interface is at the heart of the Match experience. It connects you to players in your area and at your skill level. You can look into the description of the user to find further information and find out if you have other common interests.
 
-You can decline or accept the Match by swiping or pressing a button, the App will automatically notify you if the  interest is mutual.
+You can decline or accept the Match by swiping or by pressing a button, the App will automatically notify you if the  interest is mutual.
 
 
 
