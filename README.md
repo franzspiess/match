@@ -7,12 +7,12 @@
 ### Playing sports - one MATCH at a time!
 
 
-
 MATCH is a Progressive Web App that helps you find sports partners near you. It only matches you with people that have your skill level, the easy-to-use chat and user descriptions ensure that you only meet with people you find sympathetic.
 
 ##### Tech Stack:
 
 React, Koa, MongoDB, Cloudinary.
+The front-end is build as progressive web app with React and Reach-Router. The backend is a NodeJS server on Koa with a Mongo database. Socket.io will be implemented for live-chat features.
 
 ##### Installation:
 
@@ -22,13 +22,14 @@ In the "./client/match" folder run "npm start".
 
 ### FEATURES
 
+
 #### The Match Interface
 
 <img src="https://res.cloudinary.com/pinchepanchopincho/image/upload/v1549708022/styles/1.1MATCH.jpg">
 
 The Match interface is at the heart of the Match experience. It connects you to players in your area and at your skill level. You can look into the description of the user to find further information and find out if you have other common interests.
 
-You can decline or accept the Match by swiping or pressing a button, the App will automatically notify you if the  interest is mutual.
+You can decline or accept the Match by swiping or by pressing a button, the App will automatically notify you if the  interest is mutual.
 
 
 
