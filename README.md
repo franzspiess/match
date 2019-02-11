@@ -29,6 +29,8 @@ Fork and clone the repo, then run `npm i` both in the `./server/` and `./client/
 
 In the `./client/match`folder run `npm start`.
 
+You can log-in as with username `rafael@nadal.com`  and password `test` .
+
 ### FEATURES
 
 
