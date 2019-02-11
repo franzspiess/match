@@ -11,14 +11,23 @@ MATCH is a Progressive Web App that helps you find sports partners near you. It 
 
 ##### Tech Stack:
 
-React, Koa, MongoDB, Cloudinary.
-The front-end is build as progressive web app with React and Reach-Router. The backend is a NodeJS server on Koa with a Mongo database. Socket.io will be implemented for live-chat features.
+* [React](https://reactjs.org/)
+
+* [Koa](https://koajs.com/)
+
+* [MongoDB](https://www.mongodb.com/)
+
+* [Cloudinary](https://cloudinary.com/)
+
+* [Socket.io](https://socket.io/)
+
+  The front-end is build as progressive web app with React and Reach-Router. The backend is a NodeJS server on Koa with a Mongo database. Socket.io will be implemented for live-chat features.
 
 ##### Installation:
 
-Fork and clone the repo, then run "npm i" both in the "./server" and "./client/match" folders. Make sure to activate lines 187 & 189 in "./server/controller/controller.js" to populate the database. Start the server with "node index" and then comment out the 2 lines again.
+Fork and clone the repo, then run `npm i` both in the `./server/` and `./client/match/`folders. Make sure to activate lines 187 & 189 in `./server/controller/controller.js` to populate the database. Start the server with `node index` and then comment out the 2 lines again.
 
-In the "./client/match" folder run "npm start".
+In the `./client/match`folder run `npm start`.
 
 ### FEATURES
 
