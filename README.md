@@ -10,6 +10,16 @@
 
 MATCH is a Progressive Web App that helps you find sports partners near you. It only matches you with people that have your skill level, the easy-to-use chat and user descriptions ensure that you only meet with people you find sympathetic.
 
+##### Tech Stack:
+
+React, Koa, MongoDB, Cloudinary.
+
+##### Installation:
+
+Fork and clone the repo, then run "npm i" both in the "./server" and "./client/match" folders. Make sure to activate lines 187 & 189 in "./server/controller/controller.js" to populate the database. Start the server with "node index" and then comment out the 2 lines again.
+
+In the "./client/match" folder run "npm start".
+
 ### FEATURES
 
 #### The Match Interface

@@ -47,7 +47,6 @@ module.exports.create = async (ctx, next) => {
 
     let inserted = await users.insert(thisUser)
     console.log('Inserted to DB', inserted);
-
     ctx.status = 201;
     ctx.body = inserted;
   }
