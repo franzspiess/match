@@ -1,7 +1,7 @@
 {
   "main.css": "/match/static/css/main.06ed0df0.chunk.css",
-  "main.js": "/match/static/js/main.28b99820.chunk.js",
-  "main.js.map": "/match/static/js/main.28b99820.chunk.js.map",
+  "main.js": "/match/static/js/main.c2ebb73e.chunk.js",
+  "main.js.map": "/match/static/js/main.c2ebb73e.chunk.js.map",
   "static/css/1.48d875d9.chunk.css": "/match/static/css/1.48d875d9.chunk.css",
   "static/js/1.f1869b60.chunk.js": "/match/static/js/1.f1869b60.chunk.js",
   "static/js/1.f1869b60.chunk.js.map": "/match/static/js/1.f1869b60.chunk.js.map",
@@ -11,9 +11,9 @@
   "static/media/chat3.svg": "/match/static/media/chat3.91b10fb5.svg",
   "static/media/index.css": "/match/static/media/nadal2.af8cbeaf.jpg",
   "static/media/ball4.png": "/match/static/media/ball4.9f543099.png",
-  "static/css/main.06ed0df0.chunk.css.map": "/match/static/css/main.06ed0df0.chunk.css.map",
   "static/css/1.48d875d9.chunk.css.map": "/match/static/css/1.48d875d9.chunk.css.map",
+  "static/css/main.06ed0df0.chunk.css.map": "/match/static/css/main.06ed0df0.chunk.css.map",
   "index.html": "/match/index.html",
-  "precache-manifest.8a5ef4472cdd3088ddd070da8dd83b82.js": "/match/precache-manifest.8a5ef4472cdd3088ddd070da8dd83b82.js",
+  "precache-manifest.c023246c2df827cc45e55f2416a6a45f.js": "/match/precache-manifest.c023246c2df827cc45e55f2416a6a45f.js",
   "service-worker.js": "/match/service-worker.js"
 }
