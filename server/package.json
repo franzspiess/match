@@ -1,0 +1,22 @@
+{
+  "name": "koaserver",
+  "version": "1.0.0",
+  "description": "Koa Server for Solo Project Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "run dev"
+  },
+  "author": "Pancho",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "kcors": "^2.2.2",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.4.2",
+    "monk": "^6.0.6",
+    "uuid": "^3.3.2"
+  }
+}
