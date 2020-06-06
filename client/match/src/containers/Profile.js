@@ -23,7 +23,7 @@ class Profile extends Component {
         <div className="profilebox">
           <div className="profile sport">
             <span className="title" >Sport:</span>
-            <select className="value sport-input" name="carlist" form="carform" name="sport" onChange={e => this.setState({ sport: e.target.value })
+            <select className="value sport-input" form="carform" name="sport" onChange={e => this.setState({ sport: e.target.value })
             }>
               <option value="tennis">Tennis</option>
               <option value="tabletennis">Table-Tennis</option>

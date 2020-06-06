@@ -6,19 +6,19 @@ import Match from './containers/Match';
 import Profile from './containers/Profile';
 import MyMatches from './containers/MyMatches';
 import Chat from './containers/Chat';
-import Login from './containers/LogIn';
-import Create from './containers/Create';
+
 
 
 import './App.css';
 
-const url = 'http://localhost:3000'
+const url = 'https://private-0756c-match11.apiary-mock.com'
+const urlAlt = 'http://localhost:3000'
 const socket = openSocket(url);
 
 class App extends Component {
 
   state = {
-    loading: true,
+    loading: false,
     located: [],
     matches: [],
     potentials: [],
@@ -75,6 +75,7 @@ class App extends Component {
       method: 'get',
       headers: new Headers({
         'Authorization': 'Basic ' + btoa(`${e.email}:${e.password}`),
+        'Access-Control-Allow-Credentials': true,
         'Content-Type': 'application/x-www-form-urlencoded'
       })
     })
@@ -105,25 +106,31 @@ class App extends Component {
   };
 
   matchCurrentPotential () {
+    console.log(this.state, 'BEFORE')
     let potentials = this.state.potentials;
     let currentPotential = potentials.shift();
     this.setState({ potentials, currentPotential })
-    fetch(`${url}/setmatch/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
-      .then(this.fetchAndSetMatches)
-      .catch( error => console.log(error));
+    console.log(this.state, 'AFTER')
+    // fetch(`${url}/setmatch/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
+      // .then(this.fetchAndSetMatches)
+      // .catch( error => console.log(error));
   };
 
   declineCurrentPotential () {
-    let potentials = this.state.potentials;
-    let currentPotential = potentials.shift();
-    this.setState({ potentials, currentPotential })
-    fetch(`${url}/setdecline/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
-      .then(this.fetchAndSetMatches)
-      .catch( error => console.log(error));
+    console.log(this.state, 'BEFORE')
+    // let potentials = this.state.potentials;
+    // let currentPotential = potentials.shift();
+    // this.setState({ potentials, currentPotential })
+    console.log(this.state, 'AFTER')
+    // fetch(`${url}/setdecline/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
+      // .then(this.fetchAndSetMatches)
+      // .catch( error => console.log(error));
   };
 
   fetchAndSetPotentials = () => {
-    fetch(`${url}/potentials/7`)
+    fetch(`${url}/potentials/7`, {headers: {
+      'Access-Control-Allow-Credentials': true
+    }})
       .then(result => result.json())
       .then(potentials => {
        let currentPotential = potentials[0];
@@ -147,14 +154,18 @@ class App extends Component {
   }
 
   fetchAndSetUser = () => {
-    fetch(`${url}/myuser/7`)
+    fetch(`${url}/myuser/7`, {headers: {
+      'Access-Control-Allow-Credentials': true
+    }})
       .then(result => result.json())
       .then(myUser => this.setState({ myUser }))
       .catch( error => console.log(error));
   }
 
   fetchAndSetMatches = () => {
-    fetch(`${url}/matches/7`)
+    fetch(`${url}/matches/7`, {headers: {
+      'Access-Control-Allow-Credentials': true
+    }})
       .then(result => result.json())
       .then(matches => {
         if (this.state.matches.length && matches.length > this.state.matches.length) this.setState({newMatch:true})
@@ -170,28 +181,28 @@ class App extends Component {
     this.fetchAndSetUser();
     this.fetchAndSetMatches();
     this.fetchAndSetPotentials();
-    document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    // document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
   }
 
   render () {
 
-    if (!localStorage.getItem('token')) return (
-      <div>
-        <Router>
-          <Login path="/" login={this.login.bind(this)} />
-          <Create path="create" create={this.create} />
-        </Router>
-      </div>)
+    // if (!localStorage.getItem('token')) return (
+    //   <div>
+    //     <Router basepath={process.env.PUBLIC_URL}>
+    //       <Login path="/" login={this.login.bind(this)} />
+    //       <Create path="create" create={this.create} />
+    //     </Router>
+    //   </div>)
 
     if (!this.state.loading) {
       return (
         <div className="main-container">
           <Nav />
-          <Router>
-            <Profile path="profile" myUser={this.state.myUser} updateUser={this.updateUser} logout={this.logout}/>
+          <Router basepath={process.env.PUBLIC_URL}>
+            <Profile path="/profile" myUser={this.state.myUser} updateUser={this.updateUser} logout={this.logout}/>
             <Match path="/" yes={this.matchCurrentPotential.bind(this)} no={this.declineCurrentPotential.bind(this)} potentials={this.state.potentials} newMatch={this.state.newMatch} toggleNew={this.toggleNew} currentPotential={this.state.currentPotential}/>
-            <MyMatches path="mymatches" matches={this.state.matches} myUser={this.state.myUser} fetchAndSet={this.fetchAndSetMatches}/>
-            <Chat path="mymatches/chatview/:userId" post={this.postMsgToServer.bind(this)} matches={this.state.matches} />
+            <MyMatches path="/mymatches" matches={this.state.matches} myUser={this.state.myUser} fetchAndSet={this.fetchAndSetMatches}/>
+            <Chat path="/mymatches/chatview/:userId" post={this.postMsgToServer.bind(this)} matches={this.state.matches} />
           </Router>
         </div>
       );

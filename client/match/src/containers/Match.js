@@ -30,7 +30,7 @@ class Match extends Component {
             <div className="newmatch-info">{currentPotential.first}, {currentPotential.age}</div>
           </div>
           <div className="newmatch-buttons">
-            <Link to={`mymatches`} onClick={toggleNew} >
+            <Link to={process.env.PUBLIC_URL + `/mymatches`} onClick={toggleNew} >
               <div className="newmatch-btn" >SEND MESSAGE</div>
             </Link>
             <div className="newmatch-btn" onClick={toggleNew}>KEEP SWIPING</div>

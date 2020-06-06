@@ -4,7 +4,7 @@
   "description": "Koa Server for Solo Project Backend",
   "main": "index.js",
   "scripts": {
-    "test": "run dev"
+    "test": "mocha ./src/controller/controller.test.js"
   },
   "author": "Pancho",
   "license": "ISC",

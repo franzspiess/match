@@ -14,13 +14,13 @@ class Nav extends Component {
 
     return (
       <div className="navbar">
-        <Link to="profile">
+        <Link to={process.env.PUBLIC_URL + "/profile"}>
           <div className="navbutton button profilpic" style={myStyle} alt="user"></div>
         </Link>
-        <Link to="/">
+        <Link to={process.env.PUBLIC_URL + "/"}>
           <img className="navbutton navmatch" src={ballimg} alt="matching"></img>
         </Link>
-        <Link to="mymatches">
+        <Link to={process.env.PUBLIC_URL + "/mymatches"}>
           <img className="navbutton" src={chatimg} alt="chat"></img>
         </Link>
       </div>
