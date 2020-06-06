@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/match/static/media/nadal2.af8cbeaf.jpg"
   },
   {
-    "revision": "326664188389be9fc497c8bb3e994995",
-    "url": "/match/static/media/tick3.32666418.svg"
-  },
-  {
     "revision": "e56f70f89faba013eb18243dfb94ef53",
     "url": "/match/static/media/cross3.e56f70f8.svg"
+  },
+  {
+    "revision": "326664188389be9fc497c8bb3e994995",
+    "url": "/match/static/media/tick3.32666418.svg"
   },
   {
     "revision": "ff9810c6f24e3738f98f39cb4b0f290e",
