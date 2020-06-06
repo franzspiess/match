@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e6f5af2de8334492f024",
+    "revision": "900a4ba3dda339f32dc4",
     "url": "/match/static/css/main.06ed0df0.chunk.css"
   },
   {
-    "revision": "e6f5af2de8334492f024",
-    "url": "/match/static/js/main.e6f5af2d.chunk.js"
+    "revision": "900a4ba3dda339f32dc4",
+    "url": "/match/static/js/main.900a4ba3.chunk.js"
   },
   {
     "revision": "36ba20bc1f8844e39dd6",
@@ -36,15 +36,15 @@ self.__precacheManifest = [
     "url": "/match/static/media/nadal2.af8cbeaf.jpg"
   },
   {
-    "revision": "e56f70f89faba013eb18243dfb94ef53",
-    "url": "/match/static/media/cross3.e56f70f8.svg"
-  },
-  {
     "revision": "326664188389be9fc497c8bb3e994995",
     "url": "/match/static/media/tick3.32666418.svg"
   },
   {
-    "revision": "05e9035e7585a4152bb95f3247b528d4",
+    "revision": "e56f70f89faba013eb18243dfb94ef53",
+    "url": "/match/static/media/cross3.e56f70f8.svg"
+  },
+  {
+    "revision": "35d6cdb70a1e7dc92ecdbbe8a199d9c7",
     "url": "/match/index.html"
   }
 ];
