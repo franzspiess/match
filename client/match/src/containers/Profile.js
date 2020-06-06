@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from '@reach/router'
+import { Link } from '@reach/router'
 
 
 
@@ -17,8 +17,8 @@ class Profile extends Component {
   }
 
   render () {
-    if (!localStorage.getItem('token')) return <Redirect to="/" />
-    else {
+    // if (!localStorage.getItem('token')) return <Redirect to="/" />
+
       return (
         <div className="profilebox">
           <div className="profile sport">
@@ -61,7 +61,6 @@ class Profile extends Component {
         </div>
       )
     }
-  }
 }
 
 export default Profile;
