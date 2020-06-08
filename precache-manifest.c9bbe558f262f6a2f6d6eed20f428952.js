@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "/match/static/js/main.45cbb900.chunk.js"
   },
   {
-    "revision": "349595f6e76a27db3b6a",
+    "revision": "92ef771680b1de3219bc",
     "url": "/match/static/css/1.48d875d9.chunk.css"
   },
   {
-    "revision": "349595f6e76a27db3b6a",
-    "url": "/match/static/js/1.349595f6.chunk.js"
+    "revision": "92ef771680b1de3219bc",
+    "url": "/match/static/js/1.92ef7716.chunk.js"
   },
   {
     "revision": "76818915d1e4882acc61",
@@ -32,19 +32,19 @@ self.__precacheManifest = [
     "url": "/match/static/media/chat3.91b10fb5.svg"
   },
   {
-    "revision": "af8cbeaf0f8f606a26ed09114caa0e08",
-    "url": "/match/static/media/nadal2.af8cbeaf.jpg"
+    "revision": "e56f70f89faba013eb18243dfb94ef53",
+    "url": "/match/static/media/cross3.e56f70f8.svg"
   },
   {
     "revision": "326664188389be9fc497c8bb3e994995",
     "url": "/match/static/media/tick3.32666418.svg"
   },
   {
-    "revision": "e56f70f89faba013eb18243dfb94ef53",
-    "url": "/match/static/media/cross3.e56f70f8.svg"
+    "revision": "af8cbeaf0f8f606a26ed09114caa0e08",
+    "url": "/match/static/media/nadal2.af8cbeaf.jpg"
   },
   {
-    "revision": "246db5eea35ccf2148acc42e335dec4a",
+    "revision": "adab0c081ba042dee011649018a0274e",
     "url": "/match/index.html"
   }
 ];
