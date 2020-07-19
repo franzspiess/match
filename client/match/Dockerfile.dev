@@ -1,0 +1,15 @@
+FROM node:latest
+
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+RUN npm i
+
+COPY ./ .
+
+CMD ["npm","start"]
+

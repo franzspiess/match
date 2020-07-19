@@ -9,14 +9,14 @@
   "author": "Pancho",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "kcors": "^2.2.2",
-    "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1",
-    "koa-compress": "^3.0.0",
-    "koa-router": "^7.4.0",
-    "mongoose": "^5.4.2",
-    "monk": "^6.0.6",
-    "uuid": "^3.3.2"
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.0.1",
+    "koa-router": "^9.1.0",
+    "mongoose": "^5.9.25",
+    "monk": "^7.3.0",
+    "uuidv4": "^6.2.0"
   }
 }

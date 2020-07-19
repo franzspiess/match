@@ -3,56 +3,62 @@
 const db = require('monk')('localhost/match');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuidv4');
 const users = db.get('users');
 const chats = db.get('chats');
 const userData = require('../mocks/users');
 const chatMocks = require('../mocks/chats')
 
 module.exports.create = async (ctx, next) => {
+  console.log('aaaa')
+  try {
+    let user = ctx.request.body;
+    let dbUser = await users.findOne({ email: user.email });
 
-  let user = ctx.request.body;
-  let dbUser = await users.findOne({ email: user.email });
+    if (dbUser) ctx.status = 401;
 
-  if (dbUser) ctx.status = 401;
+    else {
+      let hash = new Promise((resolve) => {
+        bcrypt.hash(user.password, saltRounds, (err, hash) => {
+          if (err) console.log(err);
+          resolve(hash);
+        })
+      });
+      let pw = await hash;
+      let token = uuidv4();
 
-  else {
-    let hash = new Promise((resolve) => {
-      bcrypt.hash(user.password, saltRounds, (err, hash) => {
-        if (err) console.log(err);
-        resolve(hash);
-      })
-    });
-    let pw = await hash;
-    let token = uuidv4();
+      let thisUser = {
+        idid: '',
+        email: user.email,
+        password: pw,
+        token,
+        first: user.first,
+        last: user.last,
+        skill: '3',
+        age: user.age,
+        img: user.img,
+        located: [2.154007, 41.390205],
+        distance: 3000,
+        matches: [],
+        declined: [],
+        flag: [],
+        sport: user.sport,
+        description: user.description
+      }
 
-    let thisUser = {
-      idid: '',
-      email: user.email,
-      password: pw,
-      token,
-      first: user.first,
-      last: user.last,
-      skill: '3',
-      age: user.age,
-      img: user.img,
-      located: [2.154007, 41.390205],
-      distance: 3000,
-      matches: [],
-      declined: [],
-      flag: [],
-      sport: user.sport,
-      description: user.description
+      let inserted = await users.insert(thisUser)
+      console.log('Inserted to DB', inserted);
+      ctx.status = 201;
+      ctx.body = inserted;
     }
-
-    let inserted = await users.insert(thisUser)
-    console.log('Inserted to DB', inserted);
-    ctx.status = 201;
-    ctx.body = inserted;
+  }
+  catch (e) {
+    console.log(e)
   }
 };
 
 module.exports.login = async (ctx, next) => {
+  console.log(ctx)
   if (ctx.request.headers.authorization) {
     let userData = ctx.request.headers.authorization.slice(6);
     let decode = new Buffer(userData, 'base64');
@@ -89,7 +95,6 @@ module.exports.setMsg = async (ctx, next) => {
   let theLog = await chats.update({
     _id: chatID
   }, { $push: { messages: msg } });
-
   ctx.status = 201;
 }
 

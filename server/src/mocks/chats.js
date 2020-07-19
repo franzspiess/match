@@ -45,15 +45,15 @@ const chats = [
 
 module.exports = chats;
 
-"messages": [{
-  "content": "Hey, I\'m Andy",
-  "author": "12",
-  "timestamp": 1529644667834
-}]
+// "messages": [{
+//   "content": "Hey, I\'m Andy",
+//   "author": "12",
+//   "timestamp": 1529644667834
+// }]
 
-"messages": [{
-  "content": "Hey, I\'m Alex",
-  "author": "4",
-  "timestamp": 1529644667834
-}]
+// "messages": [{
+//   "content": "Hey, I\'m Alex",
+//   "author": "4",
+//   "timestamp": 1529644667834
+// }]
 
