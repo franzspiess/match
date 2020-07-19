@@ -108,7 +108,8 @@ class App extends Component {
   matchCurrentPotential () {
     console.log(this.state, 'BEFORE')
     let potentials = this.state.potentials;
-    let currentPotential = potentials.shift();
+    // let currentPotential = potentials.shift();
+    const currentPotential = potentials[0]
     this.setState({ potentials, currentPotential })
     console.log(this.state, 'AFTER')
     // fetch(`${url}/setmatch/${this.state.myUser.idid}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.state.currentPotential) })
