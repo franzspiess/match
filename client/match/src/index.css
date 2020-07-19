@@ -137,7 +137,7 @@ button{
   display:flex;
   flex-direction: column;
   align-items: center;
-  height: 84vh;
+  height: 86vh;
   font-family: 'Saira Condensed', sans-serif;
 }
 .newmatch-box {
@@ -188,29 +188,26 @@ button{
 .profile {
   display:flex;
   margin-top: 4vh;
-  width: 80%;
+  width: 80vw;
   justify-content: space-between;
   font-weight:bold;
 }
 .profile-button {
-  width:30%;
+  width:30vw;
   margin-top:7vh;
   height:5vh;
   font-weight: bold;
 
-
 }
 .logout-button {
-  width: 30%;
+  width: 30vw;
   position: absolute;
   bottom: 5vh;
   background-color: red;
   height: 5vh;
   font-weight: bold;
+  text-align: center;
   line-height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .value {
@@ -224,14 +221,14 @@ button{
   width:50vw;
 
 }
-.range {
-  width:60%;
+.ranger {
+  width:38vw;
 }
 .usercontainer  {
   margin-top: 2vh;
   display:flex;
   flex-direction: column;
-  width: 99vw;
+  width: 100vw;
   flex: 7;
   align-items:space-around;
   justify-content:center;
@@ -254,7 +251,7 @@ button{
 
 .navbutton {
   height: 8vh;
-  width: 8vh;
+  width: 15vw;
 }
 .navmatch {
   margin-top: 3vh;
@@ -418,6 +415,7 @@ background-repeat: no-repeat;
   align-items: center;
   width: 100%;
   justify-content: flex-start;
+  overflow-x: scroll;
   border-bottom: 1px solid black;
 
 }
@@ -426,7 +424,7 @@ background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   flex: 7;
-  width:100%;
+  width:100vw;
 
 
 }
@@ -444,6 +442,7 @@ a,
   flex-direction: row;
   height: 12vh;
   align-items:center;
+  overflow-y:scroll;
 }
 
 .msgheader {
@@ -464,7 +463,8 @@ a,
 .message-container {
   display:flex;
   flex-direction: column;
-  height: 71vh;
+  height: 74vh;
+  overflow-y: scroll;
 }
 
 
@@ -481,7 +481,7 @@ a,
   justify-content: space-around;
   flex-direction: row;
   padding: 1vh 0;
-  width: 100%;
+  width: 100vw;
 }
 .sub-partner {
   display: flex;
@@ -490,6 +490,8 @@ a,
 
 
 }
+
+
 
 .inchatpic {
   margin-left: 2vh;
@@ -507,11 +509,11 @@ a,
 }
 .description-box-chat {
 
-  width: 90%;
+  width: 90vw;
   margin-top: 1vh;
   align-self: center;
   z-index:100;
-  height:55vh;
+  height:58vh;
   border: 1px solid black;
   padding: 1vh;
   border-radius: 4px;
@@ -521,7 +523,8 @@ a,
 
 .message {
   display: flex;
-  max-width: 60%;
+  width: 60vw;
+  max-width: 60vw;
   text-justify: center;
   padding: 0.1vh 0.7vh;
   margin-top: 1vh;
@@ -582,20 +585,12 @@ a,
 
 }
 
+
+
+
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-@media only screen and (min-width: 600px) {
-  .main-container {
-    height: 98vh;
-    width: 28vw;
-    position: absolute;
-    left: 36vw;
-    border: 2px solid black;
-  }
-  .container {
-    height: 95% !important;
-  }
 }
